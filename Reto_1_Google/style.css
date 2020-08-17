@@ -1,0 +1,59 @@
+html, body {  /* Selector de etiqueta */
+  margin: 0;
+  height: 100%;
+}
+
+main {
+  background: url('https://i.redd.it/qnh4bu6cva901.jpg') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 100%;
+}
+
+.navbar { /* Selector de clase */
+  height: 80px;
+  background-color: salmon;
+}
+
+.logo { /* Selector de clase */
+  height: 200px;
+  background-color: blue;
+}
+
+.search { /* Selector de clase */
+  height: 70px;
+  background-color: red;
+}
+
+.links { /* Selector de clase */
+  height: 200px;
+  background-color: skyblue;
+}
+
+.links-first-row {
+  height: 50%;
+  width: 500px;
+  margin: 0 auto;
+  background-color: steelblue;
+}
+
+.loguito {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 24%;
+  display: inline-block;
+  background-color: violet;
+}
+
+.loguito-imagen {
+  background-color: yellow;
+  height: 75%;
+}
+
+.loguito-texto {
+  height: 25%;
+  background-color: tomato;
+}

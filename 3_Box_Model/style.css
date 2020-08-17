@@ -1,0 +1,21 @@
+.caja {
+  display: inline;
+}
+
+.rojo {
+  color: red;
+}
+
+body {
+  margin: 0;
+}
+
+.box-model {
+  border: 1px solid black;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 10px;
+  margin-right: 50px;
+  margin-bottom: 5px;
+  margin-left: 60px;
+}
