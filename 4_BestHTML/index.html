@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta content="Este sitio es un ejemplo de cómo utilizar correctamente HTML" name="descripcion" />
+  <meta content="DEV.F, Master en Coding, HTML, inputs, ARIA" name="keywords" />
+  <meta content="https://devf-website.s3-us-west-1.amazonaws.com/Thumbnails/devf-logo-a.png" name="image">
+  <meta content="es-CR" http-equiv="Content-Language" />
+  <link rel="stylesheet" href="style.css" />
+  <title>HTML inputs</title>
+</head>
+<body>
+
+  <div id="logo-non-white"></div>
+
+  <form aria-label="Pequeño formulario demostrativo de distintos tipos de inputs">
+    <label class="descripcion" for="Nombre">Igresa tu nombre</label>
+    <input aria-label="Coloca tu nombre aquí" class="entrada" type="text" name="Nombre" placeholder="🔍 Realizar búsqueda" required />
+
+    <label class="descripcion" for="Numero">Dame un numero</label>
+    <input class="entrada" type="number" name="Numero" max="10" min="0" placeholder="0-10">
+
+    <label class="descripcion" for="Telefono">Dame tu teléfono</label>
+    <input class="entrada" type="tel" name="Telefono" autocomplete="off">
+
+    <label class="descripcion" for="Email">Dame tu correo</label>
+    <input class="entrada" type="email" name="Email">
+
+    <label class="descripcion" for="Calendario">Calendario</label>
+    <input class="entrada" type="date" name="Calendario">
+
+    <label class="descripcion" for="Rango">Rango de número</label>
+    <input class="entrada" type="range" name="Rango" max="10" min="0">
+
+    <label class="descripcion" for="Color">Dame un color</label>
+    <input class="entrada" type="color" name="Color">
+
+    <label for="Azul">Azul</label>
+    <input type="checkbox" name="Azul">
+
+    <label for="Azul">Verde</label>
+    <input type="checkbox" name="Verde">
+
+    <label for="Azul">Amarillo</label>
+    <input type="checkbox" name="Amarillo">
+
+    <label for="Mazda">Mazda</label>
+    <input type="radio" name="Autos" value="Mazda">
+
+    <label for="Mazda">Volvo</label>
+    <input type="radio" name="Autos" value="Volvo">
+
+    <label for="Mazda">VW</label>
+    <input type="radio" name="Autos" value="VW">
+
+    <label class="descripcion" for="Historia">Coloca una historia</label>
+    <textarea class="input" name="Historia" id="" cols="30" rows="10"></textarea>
+
+    <input type="submit" name="Enviar" value="Enviar a mi BD imaginaria">
+
+  </form>
+
+</body>
+</html>
