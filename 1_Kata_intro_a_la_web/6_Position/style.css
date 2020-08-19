@@ -1,0 +1,59 @@
+.caja {
+    background-color: thistle;
+    width: 100px;
+    height: 100px;
+}
+
+.navbar {
+    background: thistle;
+    /* position: fixed; */
+    /* position: sticky; */
+    position: static;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+}
+
+.contenedor{
+    height: 600px;
+}
+
+.presentacion {
+    height: 2000px;
+}
+
+.absoluta{
+    position: absolute;
+    background-color: tomato;
+    width: 200px;
+    left: 45%;
+    z-index: 1;
+}
+
+.uno {
+    left: 40%; 
+    background-color: blue;
+    z-index: 2;
+}
+
+.tres {
+    left: 50%; 
+    background-color: green;
+    z-index: 0;
+}
+
+.relativa{
+    position: relative;
+    z-index: 0;
+}
+
+.sticky{
+    position: sticky;
+    top: 200px;
+}
+
+.fixed{
+    position: fixed;
+    right: 100px;
+    top: 0px;
+}
