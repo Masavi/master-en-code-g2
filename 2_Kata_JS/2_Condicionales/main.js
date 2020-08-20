@@ -64,7 +64,7 @@ edad >= 60
 console.log('No se puede porque hay COVID'); */
 
 /*
-========================================
+========
 
 EJERCICIOS
 
@@ -72,12 +72,13 @@ EJERCICIOS
     1
 ========
 
-Crea una aplicación web empleando JavaScript que permita a dos usuarios jugar una partida de piedra, papel o tijeras.
+Crea una aplicación web con JavaScript que reciba tres números digitados por el usuario, mediante prompts, y muestre en pantalla, mediante un alert, la suma de los tres números.
 
 =========
     2
 =========
-Crea una aplicación web con JavaScript que reciba tres números digitados por el usuario, mediante prompts, y muestre en pantalla, mediante un alert, cuál es el mayor de los tres números.
+
+Crea una aplicación web empleando JavaScript que permita a dos usuarios jugar una partida de piedra, papel o tijeras.
 
 Pide al jugador1 y al jugador2 que escriban su elección mediante prompts. Compara los valores ingresados y muestra en pantalla, mediante un alert o console.log, quién fue el jugador ganador.
 
@@ -88,3 +89,4 @@ Pide al jugador1 y al jugador2 que escriban su elección mediante prompts. Compa
 Crea una aplicación web con JavaScript que reciba tres números digitados por el usuario, mediante prompts, y muestre en pantalla, mediante un alert, cuál es el mayor de los tres números.
 
 */
+
