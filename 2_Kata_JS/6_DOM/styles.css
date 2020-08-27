@@ -1,0 +1,15 @@
+.contenedor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.titulo {
+  font-family: sans-serif;
+}
+
+.imagen-pollito {
+  width: 400px;
+  border-radius: 10px;
+  border: 2px black solid;
+}
