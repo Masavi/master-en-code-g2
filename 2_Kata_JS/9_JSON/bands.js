@@ -1,4 +1,4 @@
-[
+var bands = [
   {
     "name": "Oasis",
     "description": "Oasis fue una banda de Rock inglesa ícono del Britpop formada en Mánchester en 1991.",
