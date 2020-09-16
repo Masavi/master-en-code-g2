@@ -16,10 +16,22 @@ class Animal {
   comer(comida) {
     return `${this.nombre} está comiendo ${comida}!`;
   }
+
+  // getters
+  getNombre() {
+    return this.nombre;
+  }
+
+  // setters
+  setNombre(newName) {
+    return this.nombre = newName;
+  }
 }
 
 
-
+/*
+  El orden de los argumentos SIEMPRE es muy importante
+*/
 const animal = new Animal("Perro", 4, "Ayudante de Santa");
 
 /*
@@ -30,3 +42,11 @@ console.log(animal);
 
 const gato = new Animal("Inceroar", "Gato Fuego", 2);
 console.log(gato);
+
+/*
+  4 Pilares de la Programación Orientada a Objetos
+  1) Abstracción 
+  2) Encapsulamiento
+  3) Herencia
+  4) Polimorfismo
+*/
