@@ -95,3 +95,9 @@ listaDeAlumnos.addAtEnd('Ulma');
 listaDeAlumnos.addAtEnd('Margarito');
 
 console.log(listaDeAlumnos);
+
+console.log(listaDeAlumnos.get(3));
+
+listaDeAlumnos.delete('Marlon');
+
+console.log(listaDeAlumnos);
