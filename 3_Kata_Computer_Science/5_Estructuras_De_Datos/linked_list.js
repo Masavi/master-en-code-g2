@@ -46,8 +46,9 @@ class LinkedList{
        
        this.length++;
     }
+    // TODO: addAtStart: implementation
     addAtStart() {
-        
+
     }
     get(index){
         // 0, indice mayor
@@ -83,14 +84,14 @@ class LinkedList{
 
 const listaDeAlumnos = new LinkedList();
 
-listaDeAlumnos.add('Cesar');
+listaDeAlumnos.addAtEnd('Cesar');
 
-listaDeAlumnos.add('Juan Camilo');
+listaDeAlumnos.addAtEnd('Juan Camilo');
 
-listaDeAlumnos.add('Marlon');
+listaDeAlumnos.addAtEnd('Marlon');
 
-listaDeAlumnos.add('Ulma');
+listaDeAlumnos.addAtEnd('Ulma');
  
-listaDeAlumnos.add('Margarito');
+listaDeAlumnos.addAtEnd('Margarito');
 
 console.log(listaDeAlumnos);
