@@ -25,8 +25,11 @@ class LinkedList{
         this.head = null;
         this.length = 0;
     }
+    isEmpty() {
+        return this.head === null;
+    }
     // estos son los métodos o comportamientos de mi lista
-    add(data){
+    addAtEnd(data){
         console.log('add ' + data);
        const node = new Node(data); // { data: data, next : null }
        if(this.head === null) {
@@ -42,6 +45,39 @@ class LinkedList{
        }
        
        this.length++;
+    }
+    addAtStart() {
+        
+    }
+    get(index){
+        // 0, indice mayor
+        if(this.head === null || index > this.length) {
+            return null;
+        } else {
+            // 1 -> 2 ->3
+            let counter = 1;
+            let currentNode = this.head;
+            while(counter !== index) {
+                counter++;
+                currentNode = currentNode.next;
+            }
+            return currentNode;
+        }
+    }
+
+    delete(data){
+        let currentNode = this.head;
+        let previousNode = null;
+        if(currentNode.data === data) {
+            this.head = this.currentNode.next;
+        } else {
+            while(currentNode.data !== data && currentNode.next !== null) {
+                previousNode = currentNode
+                currentNode = currentNode.next;
+            }
+            previousNode.next = currentNode.next;
+        }
+        this.length--;
     }
 }
 
