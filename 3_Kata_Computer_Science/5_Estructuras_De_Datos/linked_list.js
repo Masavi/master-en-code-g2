@@ -27,8 +27,20 @@ class LinkedList{
     }
     // estos son los métodos o comportamientos de mi lista
     add(data){
+        console.log('add ' + data);
        const node = new Node(data); // { data: data, next : null }
-       this.head = node;
+       if(this.head === null) {
+        this.head = node;
+       } else { // en este else ya sabeos que existe this.head;
+            let currentNode = this.head;
+            // while: mientras (condicion: se cumpla la condicion) { hace esto }
+            while(currentNode.next) { // verifico si next tiene un nodo
+                currentNode = currentNode.next; // sustituyo el node que vive en next a mi nodo actual
+            }
+            // cuando next sea nulo, entonces sale del while y continua con el resto del codigo
+            currentNode.next = node;
+       }
+       
        this.length++;
     }
 }
@@ -36,5 +48,13 @@ class LinkedList{
 const listaDeAlumnos = new LinkedList();
 
 listaDeAlumnos.add('Cesar');
+
+listaDeAlumnos.add('Juan Camilo');
+
+listaDeAlumnos.add('Marlon');
+
+listaDeAlumnos.add('Ulma');
+ 
+listaDeAlumnos.add('Margarito');
 
 console.log(listaDeAlumnos);
