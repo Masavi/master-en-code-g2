@@ -9,7 +9,6 @@ class Node{
 }
 
 // Linked list
-
 // Una lista ligada debe de tener una cabecera (head)
 // Nos va a indicar el inicio de la lista.
 
@@ -17,7 +16,11 @@ class Node{
 
 // Las listas tienen dos comportamientos esenciales,
 // insertar (add)
-// borrar (delete)
+//  - al principio
+// - al final
+// - en medio
+// borrar (valor)
+// busqueda o obtener (indice)
 
 class LinkedList{
     // estas son las propiedades de mi lista
@@ -46,9 +49,21 @@ class LinkedList{
        
        this.length++;
     }
-    // TODO: addAtStart: implementation
-    addAtStart() {
-
+    addAtStart(data) {
+        // Hay que crear un nodo
+        const node = new Node(data);
+        // verificar si la lista está vacia
+        // this.head = null; falsy -> this.head -> falso
+        // !falso === true
+        // (this.head === null) true
+        // (this.head !== null) falso
+        if(!this.head) {
+            this.head = node;
+        } else {
+            node.next = this.head;
+            this.head = node;
+        }
+        this.length++;
     }
     get(index){
         // 0, indice mayor
