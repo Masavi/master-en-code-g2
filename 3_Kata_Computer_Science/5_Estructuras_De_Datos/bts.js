@@ -1,7 +1,7 @@
 // Elemento que va a conformar al arbol.
 class Node {
     constructor(data, left, right){
-        this.data= data;
+        this.data = data;
         this.left = left;
         this.right = right;
     }
@@ -21,7 +21,7 @@ class Tree {
             this.root = new Node(data,null,null);
             return;
         }
-        var currentNode = this.root;
+        let currentNode = this.root;
         while(true){
             if(data < currentNode.data){
                 if(currentNode.left !== null){
@@ -54,20 +54,31 @@ class Tree {
                         // cambiar nuestro nodo actual por el hijo derecho del nodo actual
     }
 // Infinity
-    contains(data){
+    contains(data) {
         // asignar a currente node el head
-        // let currentNode = this.root;
+        let currentNode = this.root;
         // mientras currentNode exista
+        while(currentNode !== null) {
             // si data es igual con currentnode.data
+            if(data === currentNode.data) {
                 // devolver verdadero
+                return true;
             // si mi  no es igual
+            } else {
                 // si mi dato es menor currentnode.data
+                if(data < currentNode.data) {
                     // asignar mi apuntador a la izquierda
                     // currentNode igual a currentNode.left
-                // si mi dato no es menor
+                    currentNode = currentNode.left;
+                    // si mi dato no es menor
+                } else {
                     // asignar mi apuntador a la derecha
-                    // currentNode igual a currentNode.rigth
-        // devolver falso porque no existe el nodo en el arbol
+                    // currentNode igual a currentNode.right
+                    currentNode = currentNode.right;
+                }
+            }
+        }
+        return false;
     }
 }
 
@@ -76,5 +87,6 @@ arbol.add(12);
 arbol.add(55);
 arbol.add(23);
 arbol.add(13);
+console.log(arbol.contains(19));
 
 console.log(arbol);
