@@ -39,4 +39,28 @@ sensei.equipo.modelo = 'Macbook';
 sensei.equipo.ram = 6;
 
 
-console.log(sensei);
+// console.log(sensei);
+
+const empleados = [
+  ['Luis Torres', 25000],
+  ['Maria Arriaga', 42000]
+];
+
+const copiaEmpleados = (empleados) => {
+  let newEmpleados = new Array();
+  empleados.forEach((empleado) => newEmpleados.push(empleado));
+
+  return newEmpleados;
+}
+
+const cambiarSalario = (empleados, cantidad) => {
+  let copEmpleados = copiaEmpleados(empleados);
+  copEmpleados.forEach((empleado) => {
+    empleado[1] = empleado[1] + cantidad;
+  });
+  return copEmpleados;
+}
+
+const empleadosFelices = cambiarSalario(empleados, 10000);
+
+console.log(empleadosFelices);
