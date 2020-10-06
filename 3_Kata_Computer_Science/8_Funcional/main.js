@@ -63,4 +63,37 @@ const cambiarSalario = (empleados, cantidad) => {
 
 const empleadosFelices = cambiarSalario(empleados, 10000);
 
-console.log(empleadosFelices);
+// console.log(empleadosFelices);
+
+// ----------------------------------------------------------------
+// Métodos de los Arrays
+//                 0          1           2...
+const paises = ['México', 'Costa Rica', 'Colombia', 'El Salvador', 'Perú'];
+
+// Devuelve undefined
+let x = paises.forEach((pais, index, array) => {
+  // console.log('Elemento actual -> ' + pais);
+  // console.log('Índice -> ' + index);
+  // console.log(array);
+  return pais; // undefined
+});
+
+// Devuelve un arreglo
+const numbers = [1, 5, 10, 15];
+const doubles = numbers.map((number, index, array) => number * 2);
+// console.log(doubles);
+
+// Filter devuielve un arreglo con los elementos que cumplan la condición dada de retorno
+const paisesFiltrados = paises.filter((pais, index, array) => pais.length > 6);
+// console.log(paisesFiltrados);
+
+// SORT
+const frutas = ['manzana', 'pera', 'kiwi', 'banana'];
+frutasOrdenadas = frutas.sort();
+// console.log(frutasOrdenadas);
+// ¿Cómo ordenamos números?
+
+// Reduce
+const reducer = (accumulator, currentValue) => accumulator + currentValue;
+const sumatoria = numbers.reduce(reducer);
+console.log(sumatoria);
