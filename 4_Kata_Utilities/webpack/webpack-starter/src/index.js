@@ -6,3 +6,5 @@ import greeting from './greeting';
 // usar la función
 console.log(greeting('generación 2'));
 console.log(greeting('a todos los que vinieron hoy OnO'));
+
+console.log(greeting('a los que ya instalaron babel y a los que lo harán'));
