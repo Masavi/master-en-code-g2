@@ -13,7 +13,7 @@ module.exports = {
                 ] 
             },
             {
-                test: /\.js$/, // va a 
+                test: /\.js$/, // va a buscar archivos de js
                 exclude: /node_modules/, // significa que no va a buscar en la carpeta de no_modules
                 use: {
                     loader: "babel-loader",
@@ -21,6 +21,10 @@ module.exports = {
                         presets: ['@babel/preset-env']
                     }
                 }
+            },
+            {
+                test: /\.(png|jpg|svg|jpeg|gif)$/, // va a buscar imágenes
+                use: ["file-loader"] // nombre del loader para las imágenes
             }
         ]
     },
