@@ -1,4 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
 // commonJS
 module.exports = {
     module: {
@@ -25,6 +27,14 @@ module.exports = {
             {
                 test: /\.(png|jpg|svg|jpeg|gif)$/, // va a buscar imágenes
                 use: ["file-loader"] // nombre del loader para las imágenes
+            },
+            {
+                test: /\.scss$/, // va a buscar archivos de sass
+                use: [
+                    "style-loader", //estilos en linea de css
+                    "css-loader", // procesador de los archivos de sass
+                    "sass-loader" //procesador de los archivos de sass
+                ] // nombre del loader para las imágenes
             }
         ]
     },
@@ -33,5 +43,9 @@ module.exports = {
             template:"./src/index.html",
             filename:"./index.html",
         }),
+        new MiniCssExtractPlugin({
+            filename: "[name].css",
+            chunkFilename: "[id].css" // esto es para manejar muchas lineas de código
+        })
     ]
 }
