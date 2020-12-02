@@ -1,0 +1,77 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  :root {
+    --poison: rgb(215, 56, 255);
+    --grass: rgb(116, 253, 116);
+    --fire: rgb(214, 59, 59);
+    --flying: rgb(145, 250, 232);
+    --water: rgb(78, 149, 255);
+    --bug: rgb(107, 223, 103);
+    --normal: rgb(219, 247, 142);
+    --electric: rgb(243, 239, 28);
+    --ground: rgb(184, 182, 182);
+    --fairy: rgb(163, 186, 196);
+    --fighting: rgb(168, 140, 113);
+    --psychic: rgb(207, 163, 228);
+    --rock: rgb(99, 73, 73);
+    --steel: rgb(94, 94, 94);
+    --ice: rgb(90, 193, 252);
+    --ghost: rgb(103, 62, 122);
+    --dragon: rgb(248, 184, 99);
+  }
+  body {
+    background: url(https://images.unsplash.com/photo-1542779283-429940ce8336?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2550&q=80)
+      no-repeat center center fixed;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    -webkit-background-size: cover;
+    background-size: cover;
+  }
+  
+  .custom-card {
+    max-width: 250px;
+    margin: 5px;
+    background: rgba(255, 255, 255, 0.7);
+    transform: rotate(-30deg) skew(25deg) translate(0, 0);
+    transition: 0.5s;
+    box-shadow: -20px 20px 10px rgba(0, 0, 0, 0.5);
+  }
+  
+  .custom-card:before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: -20px;
+    height: 100%;
+    width: 20px;
+    background: #b1b1b1;
+    transform: 0.5s;
+    transform: rotate(0deg) skewY(-45deg);
+  }
+  
+  .custom-card:after {
+    content: "";
+    position: absolute;
+    bottom: -20px;
+    left: -10px;
+    height: 20px;
+    width: 100%;
+    background: #b1b1b1;
+    transform: 0.5s;
+    transform: rotate(0deg) skewX(-45deg);
+  }
+  
+  .custom-card:hover {
+    transform: rotate(0deg) skew(0) translate(0, -15px);
+    box-shadow: -50px 50px 50px rgba(0, 0, 0, 0.5);
+    z-index: 10;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .custom-card {
+      max-width: 500px;
+    }
+  }
+  

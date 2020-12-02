@@ -1,0 +1,1 @@
+import './styles/main.scss'; // acá estamos trayendo los estilos del main para que los loaders de webpack puedan procesarlo
