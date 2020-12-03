@@ -1,18 +1,21 @@
 import './styles/main.scss'; // acá estamos trayendo los estilos del main para que los loaders de webpack puedan procesarlo
 import Pokedex from './pokedex';
 import axios from 'axios';
-//const request = require('request')
+'use strict';
+
 // Traer todos los pokemones
 const init = () => { 
-    let pokemonesAPI = [];
+
     // TODO: Cosultar API
     axios.get('https://pokeapi.co/api/v2/pokemon?offset=0&limit=100')
-        .then(function (response) {
-            pokemonesAPI = response.data.results;
-            const pokemons = new Pokedex(pokemonesAPI);
-            console.log(pokemons);
+        .then(response => {
+            const pokemonesAPI = response.data.results;
+            const pokedex = new Pokedex(pokemonesAPI);
+            // debugger
+            pokedex.renderPokemonsAsCards();
         })
         .catch(function (error) {
+            alert('No funciono u_U');
             console.log(error);
         });
 };

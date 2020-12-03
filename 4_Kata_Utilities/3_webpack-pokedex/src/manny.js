@@ -1,52 +1,17 @@
 import "./styles/style.scss";
 import POKEMONS from "./pokedex";
-const POKEDEX_CONTAINER = document.getElementById("pokedex");
-const SHOW_MORE = "Ver mas";
 const TYPES = "Tipos";
 const EVOLUTIONS = "Evoluciones";
 const MODAL_SELECTOR = "#pokeDetailInformacion";
 const SEARCH_SELECTOR = "searchPokemon";
 
-const buildePokeCard = (pokemon) => {
-  const pokeContainer = document.createElement("div");
-  const pokeImage = document.createElement("img");
-  const pokeBody = document.createElement("div");
-  const pokeTitle = document.createElement("h5");
-  const pokeModalToogle = document.createElement("button");
+/*
+  Primer paso del refactor: Generación de tarjetas de Pokemones
+*/
+// const buildePokeCard = (pokemon) => {};
+// const renderPokeList = (pokemonList) => {};
 
-  pokeContainer.classList.add("card", "custom-card");
-  if (pokemon.types.length > 1) {
-    pokeContainer.style.backgroundImage = `linear-gradient(45deg, ${pokemon.types
-      .map((type) => `var(--${type})`)
-      .join(", ")})`;
-  }
-  pokeContainer.style.backgroundColor = `var(--${pokemon.types[0]})`;
-  pokeImage.classList.add("card-img-top");
-  pokeBody.classList.add(
-    "card-body",
-    "d-flex",
-    "flex-column",
-    "align-items-center"
-  );
-  pokeTitle.classList.add("card-title");
-  pokeModalToogle.classList.add("btn", "btn-primary");
-
-  pokeImage.src = pokemon.art_url;
-  pokeImage.alt = `${pokemon.name} Image`;
-  pokeTitle.innerHTML = `${pokemon.name} <span class="badge badge-dark">${pokemon.pkdx_id}</span>`;
-  pokeModalToogle.textContent = SHOW_MORE;
-
-  pokeModalToogle.setAttribute("data-id-pokemon", pokemon._id);
-  pokeModalToogle.setAttribute("data-toggle", "modal");
-  pokeModalToogle.setAttribute("data-target", "#pokeDetailInformacion");
-
-  pokeBody.appendChild(pokeTitle);
-  pokeBody.appendChild(pokeModalToogle);
-  pokeContainer.appendChild(pokeImage);
-  pokeContainer.appendChild(pokeBody);
-  return pokeContainer;
-};
-
+// PENDIENTE
 const buildPokeModalImage = (pokemon) => {
   const pokeImage = document.createElement("img");
   pokeImage.classList.add("img-fluid");
@@ -55,12 +20,14 @@ const buildPokeModalImage = (pokemon) => {
   return pokeImage;
 };
 
+// PENDIENTE
 const buildPokeModalDescription = (pokemon) => {
   const pokeDescription = document.createElement("p");
   pokeDescription.innerText = pokemon.description;
   return pokeDescription;
 };
 
+// PENDIENTE
 const buildPokeModalDetails = (pokemon) => {
   const pokeDetails = document.createElement("div");
   const pokeTypes = document.createElement("div");
@@ -91,6 +58,8 @@ const buildPokeModalDetails = (pokemon) => {
   return pokeDetails;
 };
 
+// Se usa con el modal
+// Está invocando varias funciones del archivo
 $(MODAL_SELECTOR).on("show.bs.modal", (event) => {
   const modal = $(MODAL_SELECTOR);
   const button = $(event.relatedTarget);
@@ -112,11 +81,7 @@ $(MODAL_SELECTOR).on("show.bs.modal", (event) => {
   modalBody.append(pokeDetails);
 });
 
-const renderPokeList = (pokemonList) => {
-  POKEDEX_CONTAINER.innerHTML = "";
-  pokemonList.map((pokemon) => POKEDEX_CONTAINER.appendChild(pokemon));
-};
-
+// VA DE LA MANO CON EL SEARCH
 const debounce = (fn, delay) => {
   let timeOutId;
   return function (...args) {
@@ -129,6 +94,7 @@ const debounce = (fn, delay) => {
   };
 };
 
+// VA DE LA MANO CON SEARCH
 const searchPokemon = (e) => {
   const pokemonListFiltered = POKEMONS.filter((pokemon) =>
     pokemon.name.toLocaleLowerCase().includes(e.target.value.toLowerCase())
@@ -136,6 +102,7 @@ const searchPokemon = (e) => {
   renderPokeList(pokemonListFiltered.map((pokemon) => buildePokeCard(pokemon)));
 };
 
+// SEARCH
 document
   .getElementById(SEARCH_SELECTOR)
   .addEventListener("keyup", debounce(searchPokemon, 300));
