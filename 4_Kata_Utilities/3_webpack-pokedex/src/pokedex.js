@@ -1,11 +1,17 @@
 const SHOW_MORE = "Ver mas";
+
+const TYPES = "Tipos";
+const EVOLUTIONS = "Evoluciones";
 const SEARCH_SELECTOR = "searchPokemon";
+const MODAL_SELECTOR = "#pokeDetailInformacion";
+
 const POKEDEX_CONTAINER = document.getElementById("pokedex");
 
 class Pokedex {
     constructor( pokemones = [] ){
         this.pokemones = pokemones;
         this.addEventListenerToSearch();
+        this.addEventListenerToModal();
     }
 
     addEventListenerToSearch() {
@@ -83,6 +89,77 @@ class Pokedex {
       POKEDEX_CONTAINER.innerHTML = "";
       const pokemonCards = this.pokemones.map((pokemon) => this.buildPokemonCard(pokemon));
       pokemonCards.map((pokemon) => POKEDEX_CONTAINER.appendChild(pokemon));
+    }
+
+    buildPokeModalImage (pokemon) {
+      const pokeImage = document.createElement("img");
+      pokeImage.classList.add("img-fluid");
+      pokeImage.src = pokemon.sprites.front_default;
+      pokeImage.alt = "PokeImage";
+      return pokeImage;
+    };
+
+    buildPokeModalDescription (pokemon) {
+      const pokeDescription = document.createElement("p");
+      pokeDescription.innerText = pokemon.description;
+      return pokeDescription;
+    };
+
+    buildPokeModalDetails (pokemon) {
+      const pokeDetails = document.createElement("div");
+      const pokeTypes = document.createElement("div");
+      const pokeTypesTitle = document.createElement("h5");
+      const pokeEvolutions = document.createElement("div");
+      const pokeEvolutionsTitle = document.createElement("h5");
+    
+      pokeTypesTitle.innerText = TYPES;
+      pokeEvolutionsTitle.innerText = EVOLUTIONS;
+    
+      pokemon.types.map((type) => {
+        const pokeDetailsType = document.createElement("span");
+        pokeDetailsType.innerText = type;
+        pokeDetailsType.classList.add("badge", "badge-dark", "p-2", "m-1");
+        pokeTypes.appendChild(pokeDetailsType);
+      });
+    
+      // El Objeto de la API no trae el campo "evolutions"
+
+      // pokemon.evolutions.map((evolution) => {
+      //   const pokeDetailsType = document.createElement("span");
+      //   pokeDetailsType.innerText = evolution.to;
+      //   pokeDetailsType.classList.add("badge", "badge-success", "p-2", "m-1");
+      //   pokeEvolutions.appendChild(pokeDetailsType);
+      // });
+
+      pokeTypes.appendChild(pokeTypesTitle);
+      pokeEvolutions.appendChild(pokeEvolutionsTitle);
+      pokeDetails.appendChild(pokeTypes);
+      pokeDetails.appendChild(pokeEvolutions);
+      return pokeDetails;
+    };
+
+    addEventListenerToModal() {
+      $(MODAL_SELECTOR).on("show.bs.modal", (event) => {
+        const modal = $(MODAL_SELECTOR);
+        const button = $(event.relatedTarget);
+        const cardText = button[0].parentNode.innerText;
+        const idPokemon = Number(cardText.split(' ')[1].slice(0, 1));
+        const modalBody = modal.find(".modal-body");
+        const pokemon = this.pokemones.find(
+          (pokemon) => pokemon.id === idPokemon
+        );
+      
+        modal.find(".modal-title").text(pokemon.name);
+        modalBody.html("");
+      
+        const pokeImage = this.buildPokeModalImage(pokemon);
+        const pokeDescription = this.buildPokeModalDescription(pokemon);
+        const pokeDetails = this.buildPokeModalDetails(pokemon);
+        modalBody.addClass("d-flex flex-column align-items-center");
+        modalBody.append(pokeImage);
+        modalBody.append(pokeDescription);
+        modalBody.append(pokeDetails);
+      });
     }
 }
 
