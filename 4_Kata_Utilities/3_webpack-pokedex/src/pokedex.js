@@ -1,12 +1,42 @@
-import axios from 'axios';
-
 const SHOW_MORE = "Ver mas";
+const SEARCH_SELECTOR = "searchPokemon";
 const POKEDEX_CONTAINER = document.getElementById("pokedex");
 
-class Pokedex{
+class Pokedex {
     constructor( pokemones = [] ){
         this.pokemones = pokemones;
+        this.addEventListenerToSearch();
     }
+
+    addEventListenerToSearch() {
+      document
+        .getElementById(SEARCH_SELECTOR)
+        .addEventListener(
+          "keyup",
+          (e) => this.debounce(this.search(e), 300),
+        );
+    }
+
+    search(e) {
+      const pokemonListFiltered = this.pokemones.filter((pokemon) =>
+        pokemon.name.toLocaleLowerCase().includes(e.target.value.toLowerCase())
+      );
+
+      this.pokemones = pokemonListFiltered;
+      this.renderPokemonsAsCards();
+    }
+
+    debounce(fn, delay){
+      let timeOutId;
+      return (...args) => {
+        if (timeOutId) {
+          clearTimeout(timeOutId);
+        }
+        timeOutId = setTimeout(() => {
+          fn(...args);
+        }, delay);
+      };
+    };
 
     buildPokemonCard(pokemon){
       const pokeContainer = document.createElement("div");

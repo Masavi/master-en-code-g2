@@ -3,13 +3,6 @@ import POKEMONS from "./pokedex";
 const TYPES = "Tipos";
 const EVOLUTIONS = "Evoluciones";
 const MODAL_SELECTOR = "#pokeDetailInformacion";
-const SEARCH_SELECTOR = "searchPokemon";
-
-/*
-  Primer paso del refactor: Generación de tarjetas de Pokemones
-*/
-// const buildePokeCard = (pokemon) => {};
-// const renderPokeList = (pokemonList) => {};
 
 // PENDIENTE
 const buildPokeModalImage = (pokemon) => {

@@ -22,7 +22,7 @@ const init = () => {
             // Esperamos a que todas las promesas terminen
             Promise.all(promises)
               .then(objects => {
-                console.log('Pokemones detallados...', objects);
+                // console.log('Pokemones detallados...', objects);
                 const pokedex = new Pokedex(objects)
                 pokedex.renderPokemonsAsCards();
               })
