@@ -5,8 +5,6 @@ import axios from 'axios';
 
 // Traer todos los pokemones
 const init = () => { 
-
-    // TODO: Cosultar API
     axios.get('https://pokeapi.co/api/v2/pokemon?offset=0&limit=100')
         .then(response => {
             const pokemonesAPI = response.data.results;
