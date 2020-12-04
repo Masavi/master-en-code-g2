@@ -143,6 +143,12 @@ class Pokedex {
         const modal = $(MODAL_SELECTOR);
         const button = $(event.relatedTarget);
         const cardText = button[0].parentNode.innerText;
+        // Venausar 5¢ver más
+        // 1- Venasaur 2- 5¢ver mas
+        // ["Venasaur", "5¢ver mas"]
+        // "5¢ver mas"
+        // "5"
+        // 5
         const idPokemon = Number(cardText.split(' ')[1].slice(0, 1));
         const modalBody = modal.find(".modal-body");
         const pokemon = this.pokemones.find(
