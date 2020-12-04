@@ -88,7 +88,7 @@ class Pokedex {
     renderPokemonsAsCards(){
       POKEDEX_CONTAINER.innerHTML = "";
       const pokemonCards = this.pokemones.map((pokemon) => this.buildPokemonCard(pokemon));
-      pokemonCards.map((pokemon) => POKEDEX_CONTAINER.appendChild(pokemon));
+      pokemonCards.forEach((pokemon) => POKEDEX_CONTAINER.appendChild(pokemon));
     }
 
     buildPokeModalImage (pokemon) {
