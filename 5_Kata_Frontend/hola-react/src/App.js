@@ -10,12 +10,15 @@ class App extends React.Component {
     "age": 22
   }
   */
+  /* Este constructor lo comentamos gracias a un warning en la terminal cuando levantamos el server de react(corrimos react).
   constructor(props) {
    super(props);
-  }
+  } */
 
   render() {
     return (
+      // class HTMLElement className VirtualDom
+      // <div className="App" style={{textAlign:"center"}}>
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
@@ -30,7 +33,9 @@ class App extends React.Component {
           >
             Learn React
           </a>
-          <Counter></Counter>
+          <Counter title="Hola Mundo React" init="0"/>
+         {/*  <Counter title="El maravilloso primer contador" init="0"/>
+          <Counter title="yei" init="0"/> */}
         </header>
       </div>
     )

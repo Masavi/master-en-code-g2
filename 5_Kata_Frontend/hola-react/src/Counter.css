@@ -1,0 +1,9 @@
+.counter-container{
+    display: flex;
+}
+
+.counter-btn{
+    border: solid 2px #61dafb;
+    color: #61dafb;
+    background-color: #282c34;
+}
