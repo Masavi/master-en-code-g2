@@ -3,7 +3,9 @@ import ImageCard from './components/ImageCard';
 import Search from './components/Search';
 import logo from './logo.svg';
 import './App.css';
-
+// 1 .- (Search) Escribir el buscador
+// 2 .- (App) Pedirle la información a giphy
+// 3 .- (App) Mostrar el resultado en las cards
 class App extends React.Component {
   // Este método es inseguro/unsafe y ya no se ocupa
   constructor(props){
@@ -31,18 +33,20 @@ class App extends React.Component {
     return (
     <div className="App">
       <Search/>
-      <ImageCard url="https://media.giphy.com/media/TdfyKrN7HGTIY/giphy.gif"></ImageCard>
+      <div className="cards">
+        <ImageCard url="https://media.giphy.com/media/TdfyKrN7HGTIY/giphy.gif"></ImageCard>
 
-      <ImageCard url="https://media.giphy.com/media/TdfyKrN7HGTIY/giphy.gif"></ImageCard>
+        <ImageCard url="https://media.giphy.com/media/TdfyKrN7HGTIY/giphy.gif"></ImageCard>
 
-      <ImageCard url="https://media.giphy.com/media/TdfyKrN7HGTIY/giphy.gif"></ImageCard>
+        <ImageCard url="https://media.giphy.com/media/TdfyKrN7HGTIY/giphy.gif"></ImageCard>
 
-      <ImageCard url="https://media.giphy.com/media/TdfyKrN7HGTIY/giphy.gif"></ImageCard>
+        <ImageCard url="https://media.giphy.com/media/TdfyKrN7HGTIY/giphy.gif"></ImageCard>
 
-      <ImageCard url="https://media.giphy.com/media/TdfyKrN7HGTIY/giphy.gif"></ImageCard>
+        <ImageCard url="https://media.giphy.com/media/TdfyKrN7HGTIY/giphy.gif"></ImageCard>
 
-      <ImageCard url="https://media.giphy.com/media/TdfyKrN7HGTIY/giphy.gif"></ImageCard>
-    </div>);
+        <ImageCard url="https://media.giphy.com/media/TdfyKrN7HGTIY/giphy.gif"></ImageCard>
+      </div>
+      </div>);
   }
 }
 

@@ -10,10 +10,14 @@ class ImageCard extends Component {
     } */
     render() {
         return( 
-        <img 
+        <>
+            <img 
             width="150px" 
             src={this.props.url} alt="img-card"
-        />)
+            />
+            {/* <h6>{this.props.url}</h6> */}
+        </>
+        )
     }
 }
 
