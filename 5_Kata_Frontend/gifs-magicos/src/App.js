@@ -3,7 +3,8 @@ import ImageCard from './components/ImageCard';
 import Search from './components/Search';
 import logo from './logo.svg';
 import './App.css';
-// 1 .- (Search) Escribir el buscador
+import axios from 'axios';
+// 1 .- (Search) Escribir el buscador 
 // 2 .- (App) Pedirle la información a giphy
 // 3 .- (App) Mostrar el resultado en las cards
 class App extends React.Component {
@@ -11,7 +12,7 @@ class App extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      logo: logo
+      gifsUrl: []
     };
   }
   componentWillMount() {
@@ -28,23 +29,38 @@ class App extends React.Component {
     return true;
   }
 
+  sendSearch = (word) => {
+    //console.log('Soy la palabra de búsqueda', word);
+    // ejecuta la peticion a la API
+    axios.get(`https://api.tenor.com/v1/search?key=FBGXXSMMLXBO&q=${word}&limit=8`)
+    .then(({ data: { results }, status}) => {
+      //console.log(status);
+      const urls = results.map(elemento => {
+        const media = elemento.media[0].gif.url;
+        //const gifUrl = Object.keys(media).map(key => media[key]);
+        return media;
+      });
+      //console.log(urls);
+      this.setState({ gifsUrl: urls });
+      //console.log(this.state.gifsUrl);
+      //results[0].url
+    })
+    .catch((error) => {
+      // handle error
+      console.log('Nos equivocamos', error);
+    });
+
+  };
+
   render() {
     console.log('Yo me debería ejecutar en el lugar: 1');
     return (
     <div className="App">
-      <Search/>
+      <Search emitSearch={this.sendSearch} />
       <div className="cards">
-        <ImageCard url="https://media.giphy.com/media/TdfyKrN7HGTIY/giphy.gif"></ImageCard>
-
-        <ImageCard url="https://media.giphy.com/media/TdfyKrN7HGTIY/giphy.gif"></ImageCard>
-
-        <ImageCard url="https://media.giphy.com/media/TdfyKrN7HGTIY/giphy.gif"></ImageCard>
-
-        <ImageCard url="https://media.giphy.com/media/TdfyKrN7HGTIY/giphy.gif"></ImageCard>
-
-        <ImageCard url="https://media.giphy.com/media/TdfyKrN7HGTIY/giphy.gif"></ImageCard>
-
-        <ImageCard url="https://media.giphy.com/media/TdfyKrN7HGTIY/giphy.gif"></ImageCard>
+        {
+          this.state.gifsUrl.map(gif => <ImageCard url={gif}/>)
+        }
       </div>
       </div>);
   }
@@ -56,5 +72,11 @@ function App() {
     
   );
 }
+
+<ImageCard url={this.state.gifsUrl[0] ? this.state.gifsUrl[0] : 'no-url' }></ImageCard>
+
+        <ImageCard url={this.state.giftsUrl && this.state.gifsUrl[1]}></ImageCard>
+
+        <ImageCard url={this.state.gifsUrl[2] || 'no-url'}></ImageCard>
  */
 export default App;
