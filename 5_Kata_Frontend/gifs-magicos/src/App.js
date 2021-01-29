@@ -1,4 +1,6 @@
 import React from 'react';
+import ImageCard from './components/ImageCard';
+import Search from './components/Search';
 import logo from './logo.svg';
 import './App.css';
 
@@ -28,23 +30,19 @@ class App extends React.Component {
     console.log('Yo me debería ejecutar en el lugar: 1');
     return (
     <div className="App">
-    <header className="App-header">
-      <img src={this.state.logo} className="App-logo" alt="logo" />
-      <p>
-        Edit <code>src/App.js</code> and save to reload.
-      </p>
-      <a
-        className="App-link"
-        href="https://reactjs.org"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Learn React
-      </a>
-      <button 
-      onClick={()=>{this.setState({logo:'https://marvelcrowd.com/media/Captura-de-pantalla-2015-10-13-a-las-12.28.25.png'})}}>Revolver gato</button>
-    </header>
-  </div>);
+      <Search/>
+      <ImageCard url="https://media.giphy.com/media/TdfyKrN7HGTIY/giphy.gif"></ImageCard>
+
+      <ImageCard url="https://media.giphy.com/media/TdfyKrN7HGTIY/giphy.gif"></ImageCard>
+
+      <ImageCard url="https://media.giphy.com/media/TdfyKrN7HGTIY/giphy.gif"></ImageCard>
+
+      <ImageCard url="https://media.giphy.com/media/TdfyKrN7HGTIY/giphy.gif"></ImageCard>
+
+      <ImageCard url="https://media.giphy.com/media/TdfyKrN7HGTIY/giphy.gif"></ImageCard>
+
+      <ImageCard url="https://media.giphy.com/media/TdfyKrN7HGTIY/giphy.gif"></ImageCard>
+    </div>);
   }
 }
 
