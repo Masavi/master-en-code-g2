@@ -1,37 +1,28 @@
-import React, { Component } from 'react';
+import { useState } from 'react';
 
-class HolaMundo extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      texto: '¡Hola desde el componente!'
-    }
-  }
+function HolaMundo(props) {
+  // Para manejar el estado en una función, usamos el hook 'useState'
+  const [texto, setTexto] = useState(props.texto);
+  const [edad, setEdad] = useState(0);
 
-  componentDidMount() {
-    console.log('Se montó el componente!');
-    // Simulemos una petición a la base de datos
-    setTimeout(
-      () => {
-        this.setState(
-          {
-            texto: 'Se actualizó...'
-          }
-        )
-      },
-      3000
-    )
-  }
+  console.log('✅', props);
 
-  render() {
-    console.log('RENDER');
-    return (
-      <React.Fragment> 
-        <h1> Componente HolaMundo </h1>
-        <h2> {this.state.texto} </h2>
-      </ React.Fragment>
-    );
-  }
+  return (
+    <>
+      <h1> Componente HolaMundo - Edad {edad} </h1>
+      <h2> {texto} </h2>
+      <input
+        placeholder="¡Cambia el texto!"
+        type="text"
+        onChange={ e => setTexto(e.target.value) }
+      />
+      <input
+        placeholder="¡Cambia la edad!"
+        type="number"
+        onChange={ e => setEdad(e.target.value) }
+      />
+    </>
+  )
 }
 
 export default HolaMundo;
