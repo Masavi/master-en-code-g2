@@ -16,7 +16,7 @@ function Todos() {
       isCompleted: true,
     },
   ]);
-
+ 
   const setCompleted = (index) => {
     console.log("Hola desde el padre!!", index);
     // Debes utilizar para modificar el estado "setTodos"
