@@ -1,5 +1,6 @@
 .todo {
   width: 500px;
   display: flex;
+  align-items: center;
   margin: 5px;
 }

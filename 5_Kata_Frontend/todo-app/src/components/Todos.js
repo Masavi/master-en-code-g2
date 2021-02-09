@@ -64,6 +64,12 @@ function Todos() {
     setTodos(myTodos);
   }
 
+  const deleteTodo = (index) => {
+    const myTodos = [...todos];
+    myTodos.splice(index, 1);
+    setTodos(myTodos);
+  }
+
   return (
     <>
       <h1>Todo App</h1>
@@ -76,6 +82,7 @@ function Todos() {
             text={todo.text} 
             isCompleted={todo.isCompleted}
             setCompleted={setCompleted}
+            delete={deleteTodo}
           />
         })
       }

@@ -12,6 +12,12 @@ function Todo(props) {
 
   return (
     <div className="todo">
+      <button
+        type="button"
+        style={{marginRight: "10px"}}
+        onClick={() => props.delete(props.index)}>
+          Borrar
+      </button>
       <input checked={props.isCompleted} type="checkbox" onChange={() => props.setCompleted(props.index)} />
       <span style={ showCompleted(props.isCompleted) }>
         {props.text}
