@@ -1,6 +1,38 @@
 import { useState } from 'react';
 import Todo from './Todo';
 
+function CreateTodo(props) {
+  const [newTodo, setNewTodo] = useState("");
+
+  return (
+    <div style={{
+      display: 'flex',
+      justifyContent: 'center',
+      margin: '10px',
+      width: '500px',
+    }}>
+      <input 
+        type="text"
+        placeholder="¡agrega un todo!"
+        style={{
+          width: '300px',
+          marginRight: '2em',
+        }}
+        onChange={e => setNewTodo(e.target.value)}
+      />
+      <button
+        style={{
+          background: 'white',
+          padding: '8px',
+          borderRadius: '10px',
+        }}
+        type="button"
+        onClick={() => props.addTodo(newTodo)}
+      > Agregar </button>
+    </div>
+  )  
+}
+
 function Todos() {
   const [todos, setTodos] = useState([
     {
@@ -24,11 +56,18 @@ function Todos() {
     setTodos(myTodos);
   }
 
+  const addTodo = (todoText) => {
+    const myTodos = [
+      ...todos,
+      { text: todoText, isCompleted: false }
+    ];
+    setTodos(myTodos);
+  }
+
   return (
     <>
       <h1>Todo App</h1>
-      <h3> Crear Todo </h3>
-      {/* Crear un componente con un input que permita insertar todos */}
+      <CreateTodo addTodo={addTodo} />
       {
         todos.map((todo, index) => {
            return <Todo
