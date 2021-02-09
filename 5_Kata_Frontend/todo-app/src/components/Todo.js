@@ -12,7 +12,7 @@ function Todo(props) {
 
   return (
     <div className="todo">
-      <input type="checkbox" onClick={() => props.setCompleted(props.index)} />
+      <input checked={props.isCompleted} type="checkbox" onChange={() => props.setCompleted(props.index)} />
       <span style={ showCompleted(props.isCompleted) }>
         {props.text}
       </span>
