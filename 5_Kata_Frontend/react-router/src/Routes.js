@@ -1,4 +1,5 @@
 import { Route } from 'react-router-dom';
+import Peticiones from './components/Peticiones';
 
 function Routes() {
   return (
@@ -10,8 +11,7 @@ function Routes() {
         <h1>Ejemplo</h1>
       </Route>
       <Route exact path="/peticiones">
-        <h1>Peticiones</h1>
-        <h2>useEffect</h2>
+        <Peticiones />
       </Route>
     </>
   )
