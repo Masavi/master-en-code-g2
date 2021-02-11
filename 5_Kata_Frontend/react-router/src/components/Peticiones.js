@@ -30,14 +30,17 @@ export default function Peticiones() {
 
   const tacoAPI = 'http://taco-randomizer.herokuapp.com/random/';
 
+  async function getTaco() {
+    try {
+      const response = await axios.get(tacoAPI);
+      setTaco(response.data); 
+    } catch (error) {
+      alert("Ocurrió un error al traer el taco!!!!");
+    }
+  }
+
   useEffect(() => {
-    // Hacer mi petición a la API
-    axios.get(tacoAPI)
-      .then((response) => {
-        // Con la respuesta, modificar el estado de mi componente
-        setTaco(response.data);
-      })
-      .catch((err) => console.log(err));
+    getTaco();
   }, []);
 
   return (
