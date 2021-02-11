@@ -25,7 +25,10 @@ export default function Peticiones() {
       <h1>Peticiones</h1>
       <h2>useEffect</h2>
       <h3>- TacoFancy API -</h3>
-      <TacoComponent taco={taco}/>
+      { taco.condiment
+        ? <TacoComponent taco={taco} /> 
+        : <span>Estamos eligiendo el taco ideal para ti</span>
+      }
     </>
   )
 }
