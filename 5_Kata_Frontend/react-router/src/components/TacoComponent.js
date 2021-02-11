@@ -1,4 +1,5 @@
-export default function TacoComponent({ taco }) {
+import PropTypes from 'prop-types';
+function TacoComponent({ taco, author }) {
   return (
     <>
       <p>
@@ -6,8 +7,22 @@ export default function TacoComponent({ taco }) {
           ${taco.mixin.name}, garnished with
           ${taco.condiment.name} topped off with
           ${taco.seasoning.name} and wrapped
-          in delicious ${taco.shell.name}` }
+          in delicious ${taco.shell.name}
+          ------------------------------
+          Autor: ${author}` }
       </p>
     </>
   )
 }
+
+// Specifies the default values for props:
+TacoComponent.defaultProps = {
+  author: 'Stranger'
+};
+
+TacoComponent.propTypes = {
+  taco: PropTypes.object.isRequired,
+  author: PropTypes.string.isRequired,
+}
+
+export default TacoComponent;
