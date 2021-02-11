@@ -1,0 +1,16 @@
+.navbar {
+  background: black;
+  height: 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .navbar__link {
+    background: rgb(73, 72, 72);
+    color: white;
+    margin: 0 5%;
+    padding: 2px 5px;
+    text-decoration: none;
+    border-radius: 10px;
+  }
+}
