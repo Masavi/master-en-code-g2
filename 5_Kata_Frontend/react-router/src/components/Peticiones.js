@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
+import TacoComponent from './TacoComponent';
+
 export default function Peticiones() {
   const [taco, setTaco] = useState({});
   const tacoAPI = 'http://taco-randomizer.herokuapp.com/random/';
@@ -23,11 +25,7 @@ export default function Peticiones() {
       <h1>Peticiones</h1>
       <h2>useEffect</h2>
       <h3>- TacoFancy API -</h3>
-      <p> {
-        taco.condiment
-          ? taco.condiment.name
-          : 'Estamos eligiendo tu taco ideal...'
-      } </p>
+      <TacoComponent taco={taco}/>
     </>
   )
 }
