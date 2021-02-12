@@ -7,7 +7,9 @@ function Routes() {
   return (
     <>
       <Route exact path="/">
-        <h1>Inicio</h1>
+        <div className="container pt-4">
+          <h1>Inicio</h1>
+        </div>
       </Route>
       <Route exact path="/ejemplo">
         <h1>Ejemplo</h1>
