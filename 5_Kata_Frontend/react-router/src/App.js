@@ -8,11 +8,14 @@ import Routes from './Routes';
 import './App.scss';
 
 export default function App() {
+  const id = 7;
+
   return (
     <Router>
       <nav className="navbar">
         <Link to="/" className="navbar__link">Home</Link>
         <Link to="/ejemplo" className="navbar__link">Ejemplo</Link>
+        <Link to={`/autor/${id}`} className="navbar__link">Autor</Link>
         <Link to="/peticiones" className="navbar__link">Peticiones</Link>
       </nav>
       <Switch>
