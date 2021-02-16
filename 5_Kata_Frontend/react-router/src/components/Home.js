@@ -14,7 +14,11 @@ const Home = ({ shows }) => {
       return <ShowCard
                 key={show.id}
                 id={show.id}
-                image={show.image.medium}
+                image={
+                  show.image
+                    ? show.image.medium
+                    : ''
+                }
                 summary={show.summary}
                 name={show.name} />
     });
