@@ -1,13 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   Navbar,
   NavbarBrand,
 } from 'reactstrap';
+import axios from 'axios';
 import './NavbarComponent.scss';
 import tv from '../assets/tv.svg';
 
 const NavbarComponent = () => {
+  const [search, setSearch] = useState('');
+
+  const getShows = async () => {
+    if (search.length < 2) return alert('¡Llena el campo!');
+    const SEARCH_SHOWS = `http://api.tvmaze.com/search/shows?q=${search}`;
+    const { data } = await axios.get(SEARCH_SHOWS);
+    console.log(data);
+  }
+
   return (
     <div>
       <Navbar color="faded" dark style={{
@@ -25,11 +35,13 @@ const NavbarComponent = () => {
           </Link>
         </NavbarBrand>
         <input
+          onChange={(e) => setSearch(e.target.value)}
           id="navbar-search"
           style={{ width: "50%" }}
           type="text"
           placeholder="Buscar series" />
         <button
+          onClick={getShows}
           style={{
             color: 'white',
             backgroundColor: '#683d82',
