@@ -5,17 +5,18 @@ import {
   NavbarBrand,
 } from 'reactstrap';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 import './NavbarComponent.scss';
 import tv from '../assets/tv.svg';
 
-const NavbarComponent = () => {
+const NavbarComponent = ({ setShows }) => {
   const [search, setSearch] = useState('');
 
   const getShows = async () => {
     if (search.length < 2) return alert('¡Llena el campo!');
     const SEARCH_SHOWS = `http://api.tvmaze.com/search/shows?q=${search}`;
     const { data } = await axios.get(SEARCH_SHOWS);
-    console.log(data);
+    setShows(data);
   }
 
   return (
@@ -52,6 +53,10 @@ const NavbarComponent = () => {
       </Navbar>
     </div>
   );
+}
+
+NavbarComponent.propTypes = {
+  setShows: PropTypes.func.isRequired,
 }
 
 export default NavbarComponent;
