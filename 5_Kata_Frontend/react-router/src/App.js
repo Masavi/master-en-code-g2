@@ -2,14 +2,14 @@ import React from "react";
 import {
   BrowserRouter as Router,
   Switch,
-  // Link
 } from "react-router-dom";
 import Routes from './Routes';
-import './App.scss';
+import NavbarComponent from "./components/NavbarComponent";
 
 export default function App() {
   return (
     <Router>
+      <NavbarComponent />
       <Switch>
         <main className="container mt-4">
           <Routes />
