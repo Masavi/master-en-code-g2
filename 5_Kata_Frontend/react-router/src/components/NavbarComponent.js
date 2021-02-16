@@ -4,6 +4,7 @@ import {
   Navbar,
   NavbarBrand,
 } from 'reactstrap';
+import './NavbarComponent.scss';
 import tv from '../assets/tv.svg';
 
 const NavbarComponent = () => {
@@ -20,9 +21,22 @@ const NavbarComponent = () => {
             alignItems: 'center',
           }} to="/">
             <img style={{ height: '32px', marginRight: '8px' }} src={tv} alt="DEVFlix Logo"/>
-            <span style={{ paddingTop: '4px', fontWeight: 'bold' }}>DEVFlix</span>
+            <span id="logo-text" style={{ paddingTop: '4px', fontWeight: 'bold' }}>DEVFlix</span>
           </Link>
         </NavbarBrand>
+        <input
+          id="navbar-search"
+          style={{ width: "50%" }}
+          type="text"
+          placeholder="Buscar series" />
+        <button
+          style={{
+            color: 'white',
+            backgroundColor: '#683d82',
+          }}
+          type="button">
+            Buscar
+        </button>
       </Navbar>
     </div>
   );
