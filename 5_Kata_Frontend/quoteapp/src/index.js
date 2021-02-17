@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import reportWebVitals from './reportWebVitals';
 import Routes from './Routes';
+import 'bootstrap/scss/bootstrap.scss'; // cuando usamos sass
+//  import 'bootstrap/dist/css/bootstrap.min.css' cuando usamos solo css
 
 ReactDOM.render(
   <React.StrictMode>
