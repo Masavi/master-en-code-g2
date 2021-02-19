@@ -22,5 +22,5 @@ export default function Routes() {
         </Switch>
     </Router>
     );
-};
+}
 

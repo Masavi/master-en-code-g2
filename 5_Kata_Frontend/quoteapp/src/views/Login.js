@@ -2,10 +2,24 @@ import React from 'react';
 import useForm from '../hooks/useForm';
 // si voy a cambiar la data mientras se encuentra montado el componente
 // eso sisgnifica que voy a utilizar el estado
+import axios from 'axios';
+import { useHistory } from "react-router-dom";
 
 export default function Login() {
+    const history = useHistory();
     const sendForm = (inputs) => {
         console.log('Ejecuté send form', inputs);
+        axios.post('http://localhost:9000/login', inputs)
+            .then(({data, status})=>{
+                console.log(data, status);
+                const { token } = data;
+                // const token = data.token;
+                window.localStorage.setItem('token', token);
+                history.push('/');
+            })
+            .catch(error => {
+                console.error(error.response.data);
+            })
     };
 
     const {
@@ -25,13 +39,13 @@ export default function Login() {
                 <div  className="col-7 mt-3">
                     <div className="input-group flex-nowrap">
                     <span className="input-group-text" id="addon-wrapping">@</span>
-                    <input type="text" value={inputs.email} onChange={handleInputs} className="form-control" id="email" placeholder="Email" aria-label="email" aria-describedby="addon-wrapping"/>
+                    <input type="text" value={inputs.email} required onChange={handleInputs} className="form-control" id="email" placeholder="Email" aria-label="email" aria-describedby="addon-wrapping"/>
                     </div>
                 </div>
                 <div  className="col-7 mt-3">
                     <div className="input-group flex-nowrap">
                     <span className="input-group-text" id="addon-wrapping">@</span>
-                    <input type="password" value={inputs.password} onChange={handleInputs} className="form-control" id="password" placeholder="Contraseña" aria-label="password" aria-describedby="addon-wrapping"/>
+                    <input type="password" value={inputs.password} required onChange={handleInputs} className="form-control" id="password" placeholder="Contraseña" aria-label="password" aria-describedby="addon-wrapping"/>
                     </div>
                 </div>
                 <div className="col-6 mt-4">
@@ -41,4 +55,4 @@ export default function Login() {
             </div>
         </form>
     );
-};
+}
