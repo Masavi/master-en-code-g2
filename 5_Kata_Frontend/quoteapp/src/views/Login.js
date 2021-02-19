@@ -4,6 +4,7 @@ import useForm from '../hooks/useForm';
 // eso sisgnifica que voy a utilizar el estado
 import axios from 'axios';
 import { useHistory } from "react-router-dom";
+import Navbar from "../components/Navbar";
 
 export default function Login() {
     const history = useHistory();
@@ -33,6 +34,8 @@ export default function Login() {
     });
 
     return(
+        <>
+                <Navbar/>
         <form onSubmit={handleSubmit}>
             <div className="container my-4">
                 <div className="row">
@@ -54,5 +57,6 @@ export default function Login() {
                 </div>
             </div>
         </form>
+        </>
     );
 }

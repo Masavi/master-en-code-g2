@@ -2,6 +2,7 @@ import React from 'react';
 import useForm from '../hooks/useForm';
 import axios from 'axios';
 import { useHistory } from "react-router-dom";
+import Navbar from "../components/Navbar";
 
 export default function Signup() {
     const history = useHistory();
@@ -30,6 +31,8 @@ export default function Signup() {
     } = useForm(sendForm, {});
 
     return(
+        <>
+                <Navbar/>
         <form onSubmit={handleSubmit}>
             <div className="container my-4">
             <div className="row">
@@ -69,5 +72,6 @@ export default function Signup() {
             </div>
         </div>
         </form>
+        </>
     );
 }

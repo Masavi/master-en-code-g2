@@ -16,7 +16,7 @@ export default function Navbar() {
             ?
                 <div className="navbar-nav">
                     <Link className="nav-link" to="/qoute">Bienvenido {user.email}!!</Link>
-                    <Link className="nav-link" to="#">Cerrar Sesión</Link>
+                    <Link className="nav-link" to="/logout">Cerrar Sesión</Link>
                 </div>
             :   
                 <div className="navbar-nav">

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { useHistory } from "react-router-dom";
-
+import Navbar from "../components/Navbar";
 
 export default function Qoute(){
     const [quote, setQuote] = useState({});
@@ -28,10 +28,12 @@ export default function Qoute(){
         }
     }, []);
 
-    return (<div className="container">
+    return (
+    <>        <Navbar/>
+    <div className="container">
         <div className="row">
             <h2>{quote.quote}</h2>
             <span>{quote.source}</span>
         </div>
-    </div>);
+    </div></>);
 }
