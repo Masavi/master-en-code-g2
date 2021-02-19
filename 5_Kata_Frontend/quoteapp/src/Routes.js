@@ -9,6 +9,7 @@ import Signup from './views/Signup';
 import Profile from './views/Profile';
 import Login from './views/Login';
 import Navbar from './components/Navbar';
+import Qoute from './views/Qoute';
 
 export default function Routes() {
     return (
@@ -19,6 +20,7 @@ export default function Routes() {
             <Route exact path="/signup" component={Signup}/>
             <Route exact path="/profile/:id" component={Profile}/>
             <Route exact path="/login" component={Login}/>
+            <Route exact path="/qoute" component={Qoute}/>
         </Switch>
     </Router>
     );

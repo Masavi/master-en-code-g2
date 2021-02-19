@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import payload from '../../utils/payload';
 
 export default function Navbar() {
+    const user = payload();
     return(
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
@@ -10,12 +12,18 @@ export default function Navbar() {
             <span className="navbar-toggler-icon"></span>
             </button>
             <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div className="navbar-nav">
-                <Link className="nav-link" to="/login">Inicio de sesión</Link>
-                <Link className="nav-link" to="/signup">Registro</Link>
-                <Link className="nav-link" to="#">Nombre Usuario</Link>
-                <Link className="nav-link" to="#">Cerrar Sesión</Link>
-            </div>
+            { user 
+            ?
+                <div className="navbar-nav">
+                    <Link className="nav-link" to="/qoute">Bienvenido {user.email}!!</Link>
+                    <Link className="nav-link" to="#">Cerrar Sesión</Link>
+                </div>
+            :   
+                <div className="navbar-nav">
+                    <Link className="nav-link" to="/login">Inicio de sesión</Link>
+                    <Link className="nav-link" to="/signup">Registro</Link>
+                </div>
+            }
             </div>
         </div>
     </nav>
