@@ -1,13 +1,11 @@
-import { useState } from 'react';
 import './index.css';
 
-const ClickCounter = () => {
-  const [count, setCount] = useState(0);
-
+const ClickCounter = (props) => {
+  const { count } = props;
   return (
     <div className="container">
       <h2>Click Counter: {count}</h2>
-      <button onClick={() => setCount(count + 1)}>¡Incrementar!</button>
+      {/* <button onClick={() => setCount(count + 1)}>¡Incrementar!</button> */}
     </div>
   );
 }
