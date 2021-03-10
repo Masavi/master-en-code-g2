@@ -1,11 +1,10 @@
-import { useState } from 'react';
 import './index.css';
 
-const HoverCounter = () => {
-  const [count, setCount] = useState(0);
+const HoverCounter = (props) => {
+  const { count, incrementCounter } = props;
 
   return (
-    <div onMouseOver={() => setCount(count + 1)} className="hover-container">
+    <div onMouseOver={incrementCounter} className="hover-container">
       <h2>Hover Counter: {count} </h2>
     </div>
   );

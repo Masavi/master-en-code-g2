@@ -1,3 +1,4 @@
 import HoverCounter from './HoverCounter';
+import WithCounter from '../../hocs/WithCounter';
 
-export default HoverCounter;
+export default WithCounter(HoverCounter);
