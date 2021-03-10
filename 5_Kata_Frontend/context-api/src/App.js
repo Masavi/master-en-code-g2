@@ -3,6 +3,7 @@ import { useState } from "react";
 // import ClickCounter from './components/ClickCounter';
 // import HoverCounter from './components/HoverCounter';
 import ContextApp from './components/ContextApp';
+import { ThemeProvider } from './contexts/ThemeContext';
 
 function App() {
 
@@ -28,12 +29,12 @@ function App() {
   }
 
   return (
-    <div>
+    <ThemeProvider>
       <h1>Context API</h1>
       <ContextApp
         theme={theme}
         toggleTheme={toggleTheme} />
-    </div>
+    </ThemeProvider>
   );
 }
 
