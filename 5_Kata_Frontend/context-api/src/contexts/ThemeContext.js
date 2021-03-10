@@ -11,15 +11,36 @@
         se conoce como un CONSUMIDOR (CONSUMER)
 */
 
-import { createContext } from 'react';
+import { createContext, useState } from 'react';
 
 const ThemeContext = createContext();
 
 const ThemeProvider = ({ children }) => {
-  const name = 'Karla';
-  const lastName = 'Solares';
+  const lightTheme = {
+    mode: 'light',
+    backgroundColor: 'white',
+    color: 'black',
+  }
 
-  const state = { name, lastName };
+  const darkTheme = {
+    mode: 'dark',
+    backgroundColor: 'black',
+    color: 'white',
+  }
+
+  const [theme, setTheme] = useState(lightTheme);
+
+  const toggleTheme = () => {
+    if (theme.mode === 'light') {
+      return setTheme(darkTheme);
+    }
+    return setTheme(lightTheme);
+  }
+
+  const state = [
+    { name: 'Karla', lastName: 'Solares', theme }, // Atributos
+    { toggleTheme }, // Métodos
+  ];
 
   return (
     <ThemeContext.Provider value={state}>
