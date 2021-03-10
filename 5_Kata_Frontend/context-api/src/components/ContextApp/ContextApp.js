@@ -1,5 +1,9 @@
+import { useContext } from 'react';
+import { ThemeContext } from '../../contexts/ThemeContext';
+
 const ContextApp = (props) => {
   const { theme, toggleTheme } = props;
+  const { name, lastName } = useContext(ThemeContext);
  
   return (
     <article style={{
@@ -14,7 +18,7 @@ const ContextApp = (props) => {
     }}>
       <h2 style={{
         color: theme.color,
-      }}>Context App</h2>
+      }}>{name} {lastName}</h2>
       <button
         onClick={toggleTheme}
         type="button"> 
