@@ -1,8 +1,8 @@
 // Forma 1
 import ClickCounter from './ClickCounter';
-import CounterHoC from '../../CounterHoC';
+import WithCounter from '../../hocs/WithCounter';
 
-export default CounterHoC(ClickCounter);
+export default WithCounter(ClickCounter);
 
 // Forma 2
 // export { default } from './ClickCounter';
