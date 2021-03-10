@@ -2,6 +2,7 @@ import { useState } from "react";
 
 // import ClickCounter from './components/ClickCounter';
 // import HoverCounter from './components/HoverCounter';
+import ContextApp from './components/ContextApp';
 
 function App() {
 
@@ -29,25 +30,9 @@ function App() {
   return (
     <div>
       <h1>Context API</h1>
-      <article style={{
-        backgroundColor: theme.backgroundColor,
-        width: '500px',
-        height: '300px',
-        display: 'flex',
-        margin: '1.5em',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center'
-      }}>
-        <h2 style={{
-          color: theme.color,
-        }}>Context App</h2>
-        <button
-          onClick={toggleTheme}
-          type="button"> 
-          Change Theme
-        </button>
-      </article>
+      <ContextApp
+        theme={theme}
+        toggleTheme={toggleTheme} />
     </div>
   );
 }
