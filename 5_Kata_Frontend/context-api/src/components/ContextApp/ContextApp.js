@@ -1,11 +1,8 @@
-import { useContext } from 'react';
-import { ThemeContext } from '../../contexts/ThemeContext';
-
-const ContextApp = () => {
+const ContextApp = (props) => {
   const [
     { name, lastName, theme },
     { toggleTheme }
-  ] = useContext(ThemeContext);
+  ] = props.themeState;
  
   return (
     <article style={{

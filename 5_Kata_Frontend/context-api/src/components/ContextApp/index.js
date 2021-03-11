@@ -1,3 +1,4 @@
 import ContextApp from './ContextApp';
+import WithTheme from '../../hocs/WithTheme';
 
-export default ContextApp;
+export default WithTheme(ContextApp);

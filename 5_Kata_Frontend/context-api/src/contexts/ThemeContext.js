@@ -11,7 +11,7 @@
         se conoce como un CONSUMIDOR (CONSUMER)
 */
 
-import { createContext, useState } from 'react';
+import { createContext, useState, useContext } from 'react';
 
 const ThemeContext = createContext();
 
@@ -48,8 +48,18 @@ const ThemeProvider = ({ children }) => {
     </ThemeContext.Provider>
   );
 }
+
+const useTheme = () => {
+  const state = useContext(ThemeContext);
+  // Si un componente fuera del provider utiliza este método...
+  if (state === undefined) {
+    throw new Error('useTheme can only be used inside ThemeProvider');
+  }
+  // Si un componente dentro del provider lo utiliza
+  return state;
+}
  
 export {
-  ThemeContext,
+  useTheme,
   ThemeProvider,
 }
