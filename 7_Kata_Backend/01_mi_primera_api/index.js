@@ -19,6 +19,10 @@ app.get('/', (request, response) => {
   response.send('¡Hola Mundo!');
 });
 
+app.get('/api/v1/docs', (request, response) => {
+  response.send('Bienvenido a la documentación');
+});
+
 /* 
   Esta es la dirección local de nuestra computadora:
   127.0.0.1 -> localhost
