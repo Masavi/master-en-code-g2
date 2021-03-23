@@ -23,6 +23,14 @@ app.get('/api/v1/docs', (request, response) => {
   response.send('Bienvenido a la documentación');
 });
 
+app.post('/api/v1/prueba', (req, res) => {
+  console.log(req.query)
+  if (req.query.codigo === '123') {
+    return res.send("¡Se envió un código!")
+  }
+  return res.status(200).send('Este es el endpoint prueba');
+});
+
 /* 
   Esta es la dirección local de nuestra computadora:
   127.0.0.1 -> localhost
