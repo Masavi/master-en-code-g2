@@ -63,17 +63,17 @@ params. La respuesta del servidor debe lucir algo así
             }}
 */
 
-const getCharacterFromSWAPI = async (idCharacter) => {
-  const { data } = await axios.get(`https://swapi.dev/api/people/${idCharacter}/`);
-  return data;
-}
+// const getCharacterFromSWAPI = async (idCharacter) => {
+//   const { data } = await axios.get(`https://swapi.dev/api/people/${idCharacter}/`);
+//   return data;
+// }
 
-app.get('/api/swapi/:idCharacter', async (req, res) => {
-  const { idCharacter } = req.params;
-  const character = await getCharacterFromSWAPI(idCharacter);
-  console.log(character);
-  res.status(200).json(character);
-});
+// app.get('/api/swapi/:idCharacter', async (req, res) => {
+//   const { idCharacter } = req.params;
+//   const character = await getCharacterFromSWAPI(idCharacter);
+//   console.log(character);
+//   res.status(200).json(character);
+// });
 
 /*
 5.- Agrega un endpoint ’/api/body que responda a una
@@ -88,5 +88,37 @@ app.put('/api/body', (req, res) => {
   // console.log(req.body);
   res.status(200).json(req.body);
 });
+
+/*
+  ¿Cómo refactorizar un endpoint 
+    para trabajar con la arquitectura
+      MVC? (Modelo - Vista - Controlador)
+*/
+
+// Tomando el ejercicio 4...
+
+// Modelo
+const getCharacterFromSWAPI = async (idCharacter) => {
+  const { data } = await axios.get(`https://swapi.dev/api/people/${idCharacter}/`);
+  return data;
+}
+
+// Controlador
+const controlador = async (req, res) => {
+  const { idCharacter } = req.params;
+  if (idCharacter < 1 || idCharacter > 50) {
+    return res.status(404).json({ message: 'Character no found' });
+  }
+
+  try {
+    const character = await getCharacterFromSWAPI(idCharacter);
+    return res.status(200).json(character); 
+  } catch (error) {
+    return res.status(500).json({ message: 'something went wrong!' }); 
+  }
+}
+
+// Vista
+app.get('/api/swapi/:idCharacter', controlador)
 
 app.listen(PORT, () => console.log(`Listening on ${PORT}`));
