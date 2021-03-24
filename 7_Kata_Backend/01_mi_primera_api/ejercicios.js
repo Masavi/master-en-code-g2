@@ -1,3 +1,4 @@
+const axios = require('axios');
 const express = require('express');
 const app = express();
 
@@ -48,14 +49,41 @@ app.get('/api/usuario/:user', (req, res) => {
 /*
 4.- Agrega un endpoint ‘/api/swapi’ que responda a una
 petición de tipo GET con el personaje solicitado de 
-                https://swapi.co/
+                https://swapi.dev/
+
 El cliente debe mandar el número de personaje mediante
 params. La respuesta del servidor debe lucir algo así
             {‘personaje’: {
                 ‘name’: ‘Luke Skywalker’,
                 ...,
             }}
+*/
 
+const getCharacterFromSWAPI = async (idCharacter) => {
+  const { data } = await axios.get(`https://swapi.dev/api/people/${idCharacter}/`);
+  return data;
+}
+
+app.get('/api/swapi/:idCharacter', async (req, res) => {
+  const { idCharacter } = req.params;
+  const character = await getCharacterFromSWAPI(idCharacter);
+  console.log(character);
+  res.status(200).json(character);
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 5.- Agrega un endpoint ’/api/body que responda a una
 petición de tipo PUT con el body que el cliente envíe al hacer la petición. 
 
