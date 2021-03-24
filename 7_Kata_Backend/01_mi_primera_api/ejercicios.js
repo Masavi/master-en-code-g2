@@ -4,6 +4,10 @@ const app = express();
 
 const PORT = process.env.PORT || 3000;
 
+// Middlewares
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
 /*
   1.- Agrega un endpoint ‘/api/’ que responda a 
   una petición de tipo GET con un código de estado 200 
@@ -71,18 +75,6 @@ app.get('/api/swapi/:idCharacter', async (req, res) => {
   res.status(200).json(character);
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
 /*
 5.- Agrega un endpoint ’/api/body que responda a una
 petición de tipo PUT con el body que el cliente envíe al hacer la petición. 
@@ -91,5 +83,10 @@ Ejemplo: cliente envía un body desde postman o insomnia que luce como este:
 
             { “nombre”: “Maui”, “ocupacion”: “Sensei” }
 */
+
+app.put('/api/body', (req, res) => {
+  // console.log(req.body);
+  res.status(200).json(req.body);
+});
 
 app.listen(PORT, () => console.log(`Listening on ${PORT}`));
