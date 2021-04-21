@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
 
-router.use(require('./RentalRouter'));
+router.get('/rental', (req, res) => res.status(200).json({ rentals: [] }));
 
 module.exports = router;
