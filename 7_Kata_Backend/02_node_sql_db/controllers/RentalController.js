@@ -60,8 +60,27 @@ const findOneById = async (req, res) => {
   }
 }
 
+const updateOneById = async (req, res) => {
+  const { idRental } = req.params;
+
+  try {
+    const response = await Rental.updateOneById(idRental, req.body);
+    return res.status(200).json({
+      message: 'Successfully updated rental by id',
+      response,
+    });
+    
+  } catch (error) {
+    return res.status(500).json({
+      message: "Server error",
+      error,
+    });
+  }
+}
+
 module.exports = {
   create,
   findAll,
   findOneById,
+  updateOneById,
 }

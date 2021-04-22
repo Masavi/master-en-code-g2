@@ -17,8 +17,16 @@ const findOneById = (id) => {
     .where({ rental_id: id });
 }
 
+const updateOneById = (id, updateBody) => {
+  return knex
+    .update(updateBody)
+    .from('rentals')
+    .where({ rental_id: id });
+}
+
 module.exports = {
   create,
   findAll,
   findOneById,
+  updateOneById,
 }

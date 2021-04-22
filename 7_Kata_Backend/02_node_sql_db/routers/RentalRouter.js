@@ -13,6 +13,7 @@ router.get('/rentals', RentalController.findAll);
 router.get('/rentals/:idRental', RentalController.findOneById);
 
 // Update One
+router.patch('/rentals/:idRental', RentalController.updateOneById);
 
 // Delete One (borrado lógico)
 
