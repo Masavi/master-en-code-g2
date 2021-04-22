@@ -25,6 +25,23 @@ const create = (req, res) => {
     })
 }
 
+const findAll = async (req, res) => {
+  try {
+    const response = await Rental.findAll(); 
+    console.log('✅', response);
+    return res.status(200).json({
+      message: 'Successfully obtained list of rentals',
+      response,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      message: 'Error obtaining list of rentals',
+      error,
+    });
+  }
+}
+
 module.exports = {
   create,
+  findAll,
 }

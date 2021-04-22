@@ -7,7 +7,7 @@ const { RentalController } = require('../controllers');
 router.post('/rentals', RentalController.create);
 
 // Read All
-router.get('/rentals', (req, res) => res.status(200).json({ rentals: [] }));
+router.get('/rentals', RentalController.findAll);
 
 // Read One
 
