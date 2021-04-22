@@ -16,6 +16,7 @@ router.get('/rentals/:idRental', RentalController.findOneById);
 router.patch('/rentals/:idRental', RentalController.updateOneById);
 
 // Delete One (borrado lógico)
+router.delete('/rentals/:idRental', RentalController.deleteOneById);
 
 // Destroy One (borrado físico)
 
