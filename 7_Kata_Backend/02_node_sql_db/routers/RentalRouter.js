@@ -10,6 +10,7 @@ router.post('/rentals', RentalController.create);
 router.get('/rentals', RentalController.findAll);
 
 // Read One
+router.get('/rentals/:idRental', RentalController.findOneById);
 
 // Update One
 

@@ -28,7 +28,7 @@ const create = (req, res) => {
 const findAll = async (req, res) => {
   try {
     const response = await Rental.findAll(); 
-    console.log('✅', response);
+
     return res.status(200).json({
       message: 'Successfully obtained list of rentals',
       response,
@@ -41,7 +41,27 @@ const findAll = async (req, res) => {
   }
 }
 
+const findOneById = async (req, res) => {
+  const { idRental } = req.params;
+
+  try {
+    const response = await Rental.findOneById(idRental);
+    if (response.length === 0) return res.status(404).json({ message: "provided rental doesn't exist" });
+    return res.status(200).json({
+      message: 'Successfully obtained rental by id',
+      response,
+    });
+    
+  } catch (error) {
+    return res.status(500).json({
+      message: "Server error",
+      error,
+    });
+  }
+}
+
 module.exports = {
   create,
   findAll,
+  findOneById,
 }

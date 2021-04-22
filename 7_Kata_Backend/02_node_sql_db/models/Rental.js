@@ -6,11 +6,19 @@ const create = (bodyRental) => {
 
 const findAll = () => {
   return knex
-    .select(['rental_id', 'title', 'address', 'guests', 'description', 'created_at'])
+    .select(['rental_id', 'title', 'address', 'guests', 'description', 'is_active', 'created_at'])
     .from('rentals');
+}
+
+const findOneById = (id) => {
+  return knex
+    .select(['rental_id', 'title', 'address', 'guests', 'description', 'is_active', 'created_at'])
+    .from('rentals')
+    .where({ rental_id: id });
 }
 
 module.exports = {
   create,
   findAll,
+  findOneById,
 }
