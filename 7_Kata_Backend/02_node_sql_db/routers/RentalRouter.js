@@ -3,7 +3,18 @@ const router = express.Router();
 
 const { RentalController } = require('../controllers');
 
-router.post('/rental', RentalController.create);
-router.get('/rental', (req, res) => res.status(200).json({ rentals: [] }));
+// Create
+router.post('/rentals', RentalController.create);
+
+// Read All
+router.get('/rentals', (req, res) => res.status(200).json({ rentals: [] }));
+
+// Read One
+
+// Update One
+
+// Delete One (borrado lógico)
+
+// Destroy One (borrado físico)
 
 module.exports = router;
