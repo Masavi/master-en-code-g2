@@ -45,7 +45,7 @@ const findOneById = async (req, res) => {
   const { idRental } = req.params;
 
   try {
-    const response = await Rental.findOneById(idRental);
+    const response = await Rental.findOneByIdWithUser(idRental);
     if (response.length === 0) return res.status(404).json({ message: "provided rental doesn't exist" });
     return res.status(200).json({
       message: 'Successfully obtained rental by id',
