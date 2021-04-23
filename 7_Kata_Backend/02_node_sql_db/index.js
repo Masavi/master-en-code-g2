@@ -7,7 +7,6 @@ app.use(express.json());
 
 app.get('/', (req, res) => res.status(200).json({ message: 'Hello World' }));
 
-// Rental
 app.use('/api/v1', require('./routers'));
 
 console.log('Entorno:', process.env.NODE_ENV);
