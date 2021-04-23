@@ -6,7 +6,8 @@ function createKnexModel(knex, tableName, tableColumns, tableId) {
   const findAll = () => {
     return knex
       .select(tableColumns)
-      .from(tableName);
+      .from(tableName)
+      .where({ is_active: true });
   }
   
   const findOneById = (id) => {
