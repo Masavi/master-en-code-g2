@@ -1,18 +1,15 @@
 const { User } = require('../models');
+const hashPassword = require('../utils/hashPassword');
 
-const create = (req, res) => {
-  // const newUser = req.body;
-  const newUser = {
-    first_name: req.body.first_name,
-    last_name: req.body.last_name,
-    email: req.body.email,
-    phone: req.body.phone,
-    biography: req.body.biography,
-  }
+const create = async (req, res) => {
+  if (req.body.password) {
+    const hash = await hashPassword(req.body.password);
+    req.body.password = hash;
+  }  
 
   // utilizando knex, insertar el objeto en la base datos
   return User
-    .create(newUser)
+    .create(req.body)
     .then((resDB) => {
       return res.status(200).json({
         message: 'user created',

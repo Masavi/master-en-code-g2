@@ -13,10 +13,13 @@ const SALT_FACTOR = 10; // La salt ayuda a generar una string aleatoria
 
 module.exports = (password) => {
   return new Promise((resolve, reject) => {
-    bcrypt.genSalt(SALT_FACTOR, function(err, salt) {
-      // HS256 --> WPA2
-      if(err) reject(err);
-      resolve(hash);
+    bcrypt.genSalt(SALT_FACTOR, function(saltErr, salt) {
+      if(saltErr) reject(saltErr);
+      bcrypt.hash(password, salt, function(err, hash) {
+        // HS256 --> WPA2
+        if(err) reject(err);
+        resolve(hash);
+      });
     })
   })
 }
