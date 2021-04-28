@@ -91,10 +91,27 @@ const deleteOneById = async (req, res) => {
   }
 }
 
+const login = async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
+     // 1) ¿Está registrado el usuario?
+    const [user] = await User.findOneByEmail(email);
+    res.status(200).json({ user: user });
+
+    // 2) ¿La contraseña es la correcta?
+
+    // 3) Generar un JWT 
+  } catch (error) {
+    return res.status(500).send({ error });
+  }
+};
+
 module.exports = {
   create,
   findAll,
   findOneById,
   updateOneById,
   deleteOneById,
+  login,
 }

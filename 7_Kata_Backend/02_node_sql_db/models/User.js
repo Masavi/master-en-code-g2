@@ -7,6 +7,10 @@ const TABLE_ID = 'user_id';
 
 const User = createKnexModel(knex, TABLE, TABLE_COLUMNS, TABLE_ID);
 
+const findOneByEmail = (email) => {
+  return knex.select(TABLE_COLUMNS).from(TABLE).where({ email: email })
+}
+
 // Esto es lo que debemos exportar al final
 // const User = {
 //   create,
@@ -15,5 +19,7 @@ const User = createKnexModel(knex, TABLE, TABLE_COLUMNS, TABLE_ID);
 //   updateOneById,
 //   deleteOneById,
 // }
+
+User.findOneByEmail = findOneByEmail;
 
 module.exports = User;

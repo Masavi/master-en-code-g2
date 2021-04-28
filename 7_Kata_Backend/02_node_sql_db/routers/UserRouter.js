@@ -20,4 +20,7 @@ router.delete('/users/:idUser', UserController.deleteOneById);
 
 // Destroy One (borrado físico)
 
+// Login
+router.post('/login', UserController.login);
+
 module.exports = router;
