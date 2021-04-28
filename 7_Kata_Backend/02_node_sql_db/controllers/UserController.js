@@ -1,9 +1,9 @@
 const { User } = require('../models');
-const hashPassword = require('../utils/hashPassword');
+const Utils = require('../utils');
 
 const create = async (req, res) => {
   if (req.body.password) {
-    const hash = await hashPassword(req.body.password);
+    const hash = await Utils.hashPassword(req.body.password);
     req.body.password = hash;
   }  
 
@@ -100,10 +100,12 @@ const login = async (req, res) => {
       { email: email },
       ['user_id', 'first_name', 'last_name', 'email', 'password'],
     );
-    if (!user) return res.status(404).json({ message: 'User not found' });
-    return res.status(200).json({ user: user });
+    if (!user) return res.status(400).json({ message: 'Invalid credentials' });
 
     // 2) ¿La contraseña es la correcta?
+    const isMatch = await Utils.comparePasswords(password, user.password);
+    if (!isMatch) return res.status(400).json({ message: 'Invalid credentials' });
+    return res.status(200).json({ user, isMatch });
 
     // 3) Generar un JWT 
   } catch (error) {
