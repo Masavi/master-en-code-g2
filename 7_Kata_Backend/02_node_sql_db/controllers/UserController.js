@@ -96,8 +96,12 @@ const login = async (req, res) => {
 
   try {
      // 1) ¿Está registrado el usuario?
-    const [user] = await User.findOneByEmail(email);
-    res.status(200).json({ user: user });
+    const [user] = await User.find(
+      { email: email },
+      ['user_id', 'first_name', 'last_name', 'email', 'password'],
+    );
+    if (!user) return res.status(404).json({ message: 'User not found' });
+    return res.status(200).json({ user: user });
 
     // 2) ¿La contraseña es la correcta?
 

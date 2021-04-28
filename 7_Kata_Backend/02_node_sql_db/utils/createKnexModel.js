@@ -2,6 +2,14 @@ function createKnexModel(knex, tableName, tableColumns, tableId) {
   const create = (body) => {
     return knex(tableName).insert(body);
   }
+
+  // query -> { email: 'randy@gmail.com'}
+  const find = (query, columns) => {
+    return knex
+      .select(columns)
+      .from(tableName)
+      .where(query);
+  }
   
   const findAll = () => {
     return knex
@@ -34,6 +42,7 @@ function createKnexModel(knex, tableName, tableColumns, tableId) {
 
   return {
     create,
+    find,
     findAll,
     findOneById,
     updateOneById,
