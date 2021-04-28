@@ -97,7 +97,7 @@ const login = async (req, res) => {
   try {
      // 1) ¿Está registrado el usuario?
     const [user] = await User.find(
-      { email: email, is_active: true },
+      { email: email },
       ['user_id', 'first_name', 'last_name', 'email', 'password'],
     );
     if (!user) return res.status(400).json({ message: 'Invalid credentials' });

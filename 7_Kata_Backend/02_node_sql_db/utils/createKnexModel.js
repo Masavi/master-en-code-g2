@@ -8,7 +8,7 @@ function createKnexModel(knex, tableName, tableColumns, tableId) {
     return knex
       .select(columns)
       .from(tableName)
-      .where(query);
+      .where({ ...query, is_active: true });
   }
   
   const findAll = () => {
