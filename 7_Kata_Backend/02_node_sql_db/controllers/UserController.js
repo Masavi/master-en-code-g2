@@ -105,9 +105,11 @@ const login = async (req, res) => {
     // 2) ¿La contraseña es la correcta?
     const isMatch = await Utils.comparePasswords(password, user.password);
     if (!isMatch) return res.status(400).json({ message: 'Invalid credentials' });
-    return res.status(200).json({ user, isMatch });
 
-    // 3) Generar un JWT 
+    // 3) Generar un JWT
+    const token = await Utils.generateToken(user);
+    return res.status(200).json({ token });
+    
   } catch (error) {
     return res.status(500).send({ error });
   }
