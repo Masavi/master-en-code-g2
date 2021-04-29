@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const JWT_SECRET = 'mipasswordultrachido';
+const { JWT_SECRET } = process.env;
 
 module.exports = {
   /* 
