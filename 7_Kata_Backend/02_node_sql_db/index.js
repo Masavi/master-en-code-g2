@@ -13,9 +13,7 @@ app.use(express.json());
   Podemos utilizar middlewares directamente en un endpoint
 */
 
-const { verifyToken } = require('./middlewares');
-
-app.get('/', verifyToken, (req, res) => res.status(200).json({ message: 'Hello World' }));
+app.get('/', (req, res) => res.status(200).json({ message: 'Hello World' }));
 
 app.use('/api/v1', require('./routers'));
 
