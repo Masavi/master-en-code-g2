@@ -11,7 +11,7 @@ module.exports = {
       password: Joi.string().required(),
       phone: Joi.string().required(),
       biography: Joi.string().required(),
-      role: Joi.string().valid(ENUM_ROLES.join(',')),
+      role: Joi.string().valid(...ENUM_ROLES).default('GUEST'),
     }),
   }), 
 }
