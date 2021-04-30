@@ -3,9 +3,10 @@ const router = express.Router();
 
 const { verifyToken, checkRole } = require('../middlewares');
 const { UserController } = require('../controllers');
+const { UserValidator } = require('../validators');
 
 // Create
-router.post('/users', UserController.create);
+router.post('/users', [UserValidator.create], UserController.create);
 
 // Read All
 router.get('/users', UserController.findAll);
