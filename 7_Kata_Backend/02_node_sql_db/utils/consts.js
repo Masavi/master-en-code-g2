@@ -1,4 +1,4 @@
-const ENUM_ROLES = ['GUEST', 'ADMING', 'CUSTOMER'];
+const ENUM_ROLES = ['GUEST', 'ADMIN', 'CUSTOMER'];
 
 module.exports = {
   ENUM_ROLES,
