@@ -6,4 +6,6 @@ app.get('/prueba', (req, res) => {
   res.status(200).json({ message: 'Todo cool' });
 });
 
+app.use(require('./routers/UserRouter'));
+
 app.listen(PORT, () => console.log("It's alive!"));
