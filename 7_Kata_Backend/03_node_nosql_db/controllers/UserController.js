@@ -16,7 +16,12 @@ module.exports = {
       res.status(400).json({ message: 'error creating user', error });
     }
   },
-  findAll: (req, res) => {
-    res.status(200).json({ message: 'users list obtained', users: [] });
+  findAll: async (req, res) => {
+    try {
+      const users = await User.find();
+      res.status(200).json({ message: 'users list obtained', users });
+    } catch (error) {
+      res.status(400).json({ message: 'error fetching users', error });
+    }
   },
 }
