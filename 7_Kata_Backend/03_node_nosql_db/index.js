@@ -9,6 +9,9 @@ mongoose.connect(process.env.MONGO_ATLAS_URI, {useNewUrlParser: true, useUnified
   .then(() => console.log('Database connected'))
   .catch(() => console.log('Error connecting to database...'));
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 app.get('/prueba', (req, res) => {
   res.status(200).json({ message: 'Todo cool' });
 });
