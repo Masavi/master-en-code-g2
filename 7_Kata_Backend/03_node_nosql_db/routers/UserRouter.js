@@ -15,6 +15,7 @@ router.get('/users/:idUser', UserController.findOne);
 router.patch('/users/:idUser', UserController.updateOne);
 
 // Delete (Logical, One)
+router.delete('/users/:idUser', UserController.deleteOne);
 
 // Delete (Physical, One)
 

@@ -42,5 +42,14 @@ module.exports = {
     } catch (error) {
       return res.status(500).json({ error });
     }
+  },
+  deleteOne: async (req, res) => {
+    const id = req.params.idUser;
+    try {
+      await User.findByIdAndUpdate(id, { is_active: false }, { new: true });
+      return res.status(204).json();
+    } catch (error) {
+      return res.status(500).json({ error });
+    }
   }
 }

@@ -23,6 +23,10 @@ const UserSchema = new mongoose.Schema({
     type: String,
     default: 'https://ca.slack-edge.com/TE1NJDVGU-UFLF10755-78d87551fb96-512'
   },
+  is_active: {
+    type: Boolean,
+    default: true,
+  },
 })
 
 /**
