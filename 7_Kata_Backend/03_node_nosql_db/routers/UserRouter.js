@@ -12,6 +12,7 @@ router.get('/users', UserController.findAll);
 router.get('/users/:idUser', UserController.findOne);
 
 // Upddate (One)
+router.patch('/users/:idUser', UserController.updateOne);
 
 // Delete (Logical, One)
 
