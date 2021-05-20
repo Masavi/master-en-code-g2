@@ -53,5 +53,14 @@ module.exports = {
     } catch (error) {
       return res.status(500).json({ error });
     }
+  },
+  destroyOne: async (req, res) => {
+    const id = req.params.idUser;
+    try {
+      await User.findByIdAndRemove(id);
+      return res.status(204).json();
+    } catch (error) {
+      return res.status(500).json({ error });
+    }
   }
 }

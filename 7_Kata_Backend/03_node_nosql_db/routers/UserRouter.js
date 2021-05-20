@@ -18,5 +18,6 @@ router.patch('/users/:idUser', UserController.updateOne);
 router.delete('/users/:idUser', UserController.deleteOne);
 
 // Delete (Physical, One)
+router.delete('/users/:idUser/destroy', UserController.destroyOne);
 
 module.exports = router;
