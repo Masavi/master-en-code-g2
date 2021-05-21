@@ -20,4 +20,7 @@ router.delete('/tickets/:idTicket', TicketController.deleteOne);
 // Delete (Physical, One)
 router.delete('/tickets/:idTicket/destroy', TicketController.destroyOne);
 
+// Calcular subtotal, iva y total
+router.put('/tickets/:idTicket/checkout', TicketController.checkout);
+
 module.exports = router;

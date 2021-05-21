@@ -62,5 +62,26 @@ module.exports = {
     } catch (error) {
       return res.status(500).json({ error });
     }
-  }
+  },
+  checkout: async (req, res) => {
+    const id = req.params.idTicket;
+
+    // 1) Encontrar el ticket
+    const ticket = await Ticket
+      .findById(id)
+      .populate('items')
+      .populate('user');
+
+    // 2) Encontrar los items del ticket
+
+    // 3) Hacer una suma de los precios de cada item, para obtener el subtotal
+
+    // 4) Obtener el tax del subtotal
+
+    // 5) Obtener el total, sumando subtotal + tax
+
+    // 6) Actualizar los valores subtotal, tax y total del ticket dado
+
+    res.status(200).json(ticket);
+  },
 }
