@@ -69,16 +69,19 @@ module.exports = {
     // 1) Encontrar el ticket
     const ticket = await Ticket
       .findById(id)
-      .populate('items')
+      .populate('items') // 2) Encontrar los items del ticket
       .populate('user');
 
-    // 2) Encontrar los items del ticket
-
     // 3) Hacer una suma de los precios de cada item, para obtener el subtotal
+    const subtotal = ticket.items.reduce((subtotal, item) => subtotal + item.price, 0); 
 
     // 4) Obtener el tax del subtotal
+    const tax = (subtotal * 0.16);
 
     // 5) Obtener el total, sumando subtotal + tax
+    const total = subtotal + tax;
+
+    console.log(subtotal, tax, total);
 
     // 6) Actualizar los valores subtotal, tax y total del ticket dado
 
