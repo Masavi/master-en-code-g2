@@ -3,7 +3,7 @@ require('dotenv').config();
 const mongoose = require('mongoose');
 const express = require('express');
 const app = express(); // Aplicación de API
-const PORT = 4020 || process.env.PORT;
+const PORT = process.env.PORT || 4020;
 
 mongoose.connect(process.env.MONGO_ATLAS_URI, {useNewUrlParser: true, useUnifiedTopology: true})
   .then(() => console.log('Database connected'))
@@ -17,5 +17,6 @@ app.get('/prueba', (req, res) => {
 });
 
 app.use(require('./routers/UserRouter'));
+app.use(require('./routers/ItemRouter'));
 
-app.listen(PORT, () => console.log("It's alive!"));
+app.listen(PORT, () => console.log(`It's alive on ${PORT}!`));
