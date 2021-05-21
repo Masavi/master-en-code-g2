@@ -70,7 +70,7 @@ module.exports = {
     const ticket = await Ticket
       .findById(id)
       .populate('items') // 2) Encontrar los items del ticket
-      .populate('user');
+      .populate('user'); // El populate es la solución simple a hacer un $lookup
 
     // 3) Hacer una suma de los precios de cada item, para obtener el subtotal
     const subtotal = ticket.items.reduce((subtotal, item) => subtotal + item.price, 0); 
@@ -81,10 +81,9 @@ module.exports = {
     // 5) Obtener el total, sumando subtotal + tax
     const total = subtotal + tax;
 
-    console.log(subtotal, tax, total);
-
     // 6) Actualizar los valores subtotal, tax y total del ticket dado
+    const checkoutTicket = await Ticket.findByIdAndUpdate(id, { subtotal, tax, total }, { new: true });
 
-    res.status(200).json(ticket);
+    return res.status(200).json(checkoutTicket);
   },
 }
