@@ -17,6 +17,12 @@ const ItemSchema = new mongoose.Schema({
     type: Boolean,
     default: true,
   },
+}, {
+  collection: 'items',
+  timestamps: {
+    createdAt: 'created_at',
+    updatedAt: 'updated_at',
+  },
 })
 
 const Item = mongoose.model('Item', ItemSchema);
