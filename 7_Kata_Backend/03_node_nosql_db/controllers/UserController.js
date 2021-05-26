@@ -88,4 +88,62 @@ module.exports = {
       res.status(400).json({ message: 'Error creating user post', error });
     }
   },
+  findAllPosts: async (req, res) => {
+    const id = req.params.idUser;
+    try {
+      const user = await User.findOne({ _id: id, is_active: true });
+      if (!user) return res.status(404).json({ message: 'user not found' });
+      const { posts } = user;
+      res.status(200).json({ message: 'user posts found', posts});
+    } catch (error) {
+      res.status(500).json({ message: 'Error finding user posts', error });
+    }
+  },
+  findOnePost: async (req, res) => {
+    const { idUser, idPost } = req.params;
+    try {
+      const user = await User.findOne({ _id: idUser, is_active: true });
+      if (!user) return res.status(404).json({ message: 'user not found' });
+      const post = user.posts.id(idPost);
+      // const post = user.posts.find(post => post._id.toString() === idPost);
+      if (!post || !post.is_active) return res.status(404).json({ message: 'post in user not found' });
+      res.status(200).json({ message: 'user post found', post });
+    } catch (error) {
+      res.status(500).json({ message: 'Error finding user posts', error });
+    }
+  },
+  updateOnePost: async (req, res) => {
+    const { idUser, idPost } = req.params;
+    try {
+      const user = await User.findOne({ _id: idUser, is_active: true });
+      if (!user) return res.status(404).json({ message: 'user not found' });
+      // const post = user.posts.id(idPost);
+      const post = user.posts.find(post => post._id.toString() === idPost);
+      if (!post || !post.is_active) return res.status(404).json({ message: 'post in user not found' });
+      
+      post.set(req.body);
+      await user.save();
+
+      res.status(200).json({ message: 'user post updated', post });
+    } catch (error) {
+      res.status(500).json({ message: 'Error finding user posts', error });
+    }
+  },
+  deleteOnePost: async (req, res) => {
+    const { idUser, idPost } = req.params;
+    try {
+      const user = await User.findOne({ _id: idUser, is_active: true });
+      if (!user) return res.status(404).json({ message: 'user not found' });
+      // const post = user.posts.id(idPost);
+      const post = user.posts.find(post => post._id.toString() === idPost);
+      if (!post || !post.is_active) return res.status(404).json({ message: 'post in user not found' });
+      
+      post.set({ is_active: false });
+      await user.save();
+
+      res.status(204).json();
+    } catch (error) {
+      res.status(500).json({ message: 'Error finding user posts', error });
+    }
+  },
 }

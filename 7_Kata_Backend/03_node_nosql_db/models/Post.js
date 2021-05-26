@@ -16,6 +16,10 @@ const PostSchema = new mongoose.Schema({
   image: {
     type: String,
     default: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fspectrumconsultants.com%2Fwp-content%2Fuploads%2F2020%2F05%2Fstock-photo-typewriter-header-704430556.png&f=1&nofb=1',
+  },
+  is_active: {
+    type: Boolean,
+    default: true,
   }
 });
 

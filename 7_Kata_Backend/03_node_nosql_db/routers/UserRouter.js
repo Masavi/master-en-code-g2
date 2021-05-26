@@ -28,11 +28,15 @@ router.delete('/users/:idUser/destroy', UserController.destroyOne);
 router.post('/users/:idUser/posts', UserController.createPost);
 
 // Read (One)
+router.get('/users/:idUser/posts', UserController.findAllPosts);
 
 // Read (All)
+router.get('/users/:idUser/posts/:idPost', UserController.findOnePost);
 
 // Update
+router.patch('/users/:idUser/posts/:idPost', UserController.updateOnePost);
 
 // Delete
+router.delete('/users/:idUser/posts/:idPost', UserController.deleteOnePost);
 
 module.exports = router;
