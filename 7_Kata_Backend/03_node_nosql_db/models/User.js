@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { PostSchema } = require('./Post');
 
 const UserSchema = new mongoose.Schema({
   first_name: {
@@ -23,24 +24,7 @@ const UserSchema = new mongoose.Schema({
     type: String,
     default: 'https://ca.slack-edge.com/TE1NJDVGU-UFLF10755-78d87551fb96-512'
   },
-  // user.posts.push({ title: "Hola Mundo", body: "Mi primer post" })
-  // Endpoints:
-  // /user/:idUser/post -> CRUD
-  posts: [{
-    title: {
-      type: String,
-      required: true
-    },
-    body: {
-      type: String,
-      required: true
-    },
-    date: {
-      type: Date,
-      default: Date.now(),
-    }
-  }],
-  // posts: [ PostSchema ],
+  posts: [ PostSchema ],
   is_active: {
     type: Boolean,
     default: true,
