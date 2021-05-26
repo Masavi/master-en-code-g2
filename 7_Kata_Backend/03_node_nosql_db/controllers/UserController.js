@@ -69,6 +69,9 @@ module.exports = {
       return res.status(500).json({ error });
     }
   },
+  /**
+   * User Posts
+   */
   createPost: async (req, res) => {
     const id = req.params.idUser;
     try {
