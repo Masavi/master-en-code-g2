@@ -20,4 +20,19 @@ router.delete('/users/:idUser', UserController.deleteOne);
 // Delete (Physical, One)
 router.delete('/users/:idUser/destroy', UserController.destroyOne);
 
+/**
+ * User Posts
+ */
+
+// Create
+router.post('/users/:idUser/posts', UserController.createPost);
+
+// Read (One)
+
+// Read (All)
+
+// Update
+
+// Delete
+
 module.exports = router;

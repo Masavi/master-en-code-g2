@@ -1,4 +1,5 @@
 const User = require('../models/User');
+const { Post } = require('../models/Post');
 
 module.exports = {
   create: async (req, res) => {
@@ -11,6 +12,11 @@ module.exports = {
     try {
       console.log(req.body)
       const newUser = await User.create(req.body);
+      /**
+       * Lo de arriba, sería equivalente a hacer:
+       * const newUser = new User(req.body);
+       * newUser.save();
+       */
       res.status(201).json({ message: 'user created', user: newUser }); 
     } catch (error) {
       res.status(400).json({ message: 'error creating user', error });
@@ -62,5 +68,24 @@ module.exports = {
     } catch (error) {
       return res.status(500).json({ error });
     }
-  }
+  },
+  createPost: async (req, res) => {
+    const id = req.params.idUser;
+    try {
+      const user = await User.findOne({ _id: id, is_active: true });
+      if (!user) return res.status(404).json({ message: 'user not found' });
+      /**
+       * Primero quiero crear una instancia de Post,
+       * aprovechando el schema asociado al modelo.
+       */
+      const newPost = new Post(req.body);
+      // newPost.save() // Si hacemos esto, el documento newPost se guarda en su propia colección
+      user.posts.push(newPost);
+      await user.save();
+
+      res.status(201).json({ message: 'user post created', user}); 
+    } catch (error) {
+      res.status(400).json({ message: 'Error creating user post', error });
+    }
+  },
 }
