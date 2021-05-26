@@ -1,4 +1,4 @@
-const Ticket = require('../models/Ticket');
+const { Ticket } = require('../models/Ticket');
 
 module.exports = {
   create: async (req, res) => {
