@@ -27,10 +27,10 @@ router.delete('/users/:idUser/destroy', UserController.destroyOne);
 // Create
 router.post('/users/:idUser/posts', UserController.createPost);
 
-// Read (One)
+// Read (All)
 router.get('/users/:idUser/posts', UserController.findAllPosts);
 
-// Read (All)
+// Read (One)
 router.get('/users/:idUser/posts/:idPost', UserController.findOnePost);
 
 // Update

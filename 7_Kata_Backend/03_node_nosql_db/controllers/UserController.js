@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const { User } = require('../models/User');
 const { Post } = require('../models/Post');
 
@@ -86,6 +87,9 @@ module.exports = {
       user.posts.push(newPost);
       await user.save();
 
+      const filteredPosts = user.posts.filter(post => post.is_active);
+      user.posts = filteredPosts;
+
       res.status(201).json({ message: 'user post created', user}); 
     } catch (error) {
       res.status(400).json({ message: 'Error creating user post', error });
@@ -94,11 +98,53 @@ module.exports = {
   findAllPosts: async (req, res) => {
     const id = req.params.idUser;
     try {
-      const user = await User.findOne({ _id: id, is_active: true });
+      const [user] = await User.aggregate([
+        {
+          '$match': {
+            '_id': mongoose.Types.ObjectId(id), 
+            'is_active': true
+          }
+        }, {
+          '$unwind': {
+            'path': '$posts'
+          }
+        }, {
+          '$match': {
+            'posts.is_active': true
+          }
+        }, {
+          '$group': {
+            '_id': '$_id', 
+            'role': {
+              '$first': '$role'
+            }, 
+            'profile_pic': {
+              '$first': '$profile_pic'
+            }, 
+            'is_active': {
+              '$first': '$is_active'
+            }, 
+            'first_name': {
+              '$first': '$first_name'
+            }, 
+            'last_name': {
+              '$first': '$last_name'
+            }, 
+            'email': {
+              '$first': '$email'
+            }, 
+            'posts': {
+              '$push': '$posts'
+            }
+          }
+        }
+      ]);
       if (!user) return res.status(404).json({ message: 'user not found' });
       const { posts } = user;
-      res.status(200).json({ message: 'user posts found', posts});
+
+      res.status(200).json({ message: 'user posts found', posts });
     } catch (error) {
+      console.log(error);
       res.status(500).json({ message: 'Error finding user posts', error });
     }
   },
