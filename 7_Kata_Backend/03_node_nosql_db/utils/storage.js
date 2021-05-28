@@ -1,20 +1,20 @@
+require('dotenv').config();
 const { Storage } = require('@google-cloud/storage');
 
-const storage = Storage({
-  projectId: "", // Desde Firebase Settings
+const storage = new Storage({
+  projectId: process.env.FIREBASE_PROJECT_ID, // Desde Firebase Settings
   keyFilename: "service.json",
 });
 
 // Mucho ojo: la url NO LLEVA gs:// al inicio
-const bucket = storage.bucket("");
+const bucket = storage.bucket(process.env.FIREBASE_BUCKET_URL);
 
 module.exports = (file) =>{
-
   return new Promise((resolve,reject) => {
       if(!file) reject("No hay ningun arhivo");
 
+      console.log(file);
       const newFilename = `${file.originalname}_${Date.now()}`; // esto va a renombra el archivo
-
       const fileUpload  =  bucket.file(newFilename); // voy a crear un nuevo archivo
 
       /*
@@ -44,5 +44,4 @@ module.exports = (file) =>{
 
       blobStream.end(file.buffer); // aqui empiezo la transmision de datos del backend al bucket
   })
-
 }

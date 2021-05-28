@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const storage = require('../utils/storage');
 const { User } = require('../models/User');
 const { Post } = require('../models/Post');
 
@@ -11,7 +12,16 @@ module.exports = {
     // const response = await newUser.save();
 
     try {
-      console.log(req.body)
+      /**
+       * Si nos mandan un archivo, subimos este archivo
+       * a Firebase, y reemplazamos el archivo del body
+       * por la url del almacenamiento de Firebase
+       */
+      if (req.file) {
+        const url = await storage(req.file);
+        req.body.profile_pic = url;
+      }
+
       const newUser = await User.create(req.body);
       /**
        * Lo de arriba, sería equivalente a hacer:
