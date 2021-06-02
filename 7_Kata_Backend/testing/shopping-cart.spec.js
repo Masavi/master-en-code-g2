@@ -45,4 +45,29 @@ describe('Shopping cart - Unit tests', () => {
       expect(shoppingCart.getTotal()).to.equal(expectedTotal)
     })
   })
+
+  describe('getItemById', () => {
+    it('should get an item by its index', () => {
+      items.forEach(item => shoppingCart.addItem(item))
+
+      for(let i = 0; i < shoppingCart.items.length; i++) {
+        expect(shoppingCart.getItemById(i)).to.deep.equal(itemsObject[i])
+      }
+    })
+  })
+
+  describe('removeItemById', () => {
+    it('should remove the item by id', () => {
+      items.forEach(item => shoppingCart.addItem(item))
+
+      const deletedItems = []
+
+      items.forEach(_ => {
+        deletedItems.push(shoppingCart.removeItemById(0))
+      })
+
+      expect(shoppingCart.items.length).to.equal(0)
+      expect(deletedItems).to.deep.equal(itemsObject)
+    })
+  })
 })

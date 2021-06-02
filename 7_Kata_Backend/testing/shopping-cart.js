@@ -21,4 +21,13 @@ ShoppingCart.prototype.getTotal = function () {
  return this.total
 }
 
+ShoppingCart.prototype.getItemById = function (index) {
+    return this.items[index]
+}
+
+ShoppingCart.prototype.removeItemById = function(index) {
+    const removedItems = this.getItemById(index)
+    this.items.splice(index, 1)
+    return removedItems
+}
 module.exports = ShoppingCart
