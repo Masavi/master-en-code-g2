@@ -14,6 +14,11 @@ ShoppingCart.prototype.addItem = function (itemString) {
         price
     })
 
+    this.total += price
+}
+
+ShoppingCart.prototype.getTotal = function () {
+ return this.total
 }
 
 module.exports = ShoppingCart

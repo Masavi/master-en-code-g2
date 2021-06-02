@@ -35,4 +35,14 @@ describe('Shopping cart - Unit tests', () => {
       expect(shoppingCart.items).to.deep.equal(itemsObject)
     })
   })
+
+  describe('#getTotal', () => {
+    it('should return the total', () => {
+      const expectedTotal = itemsObject.reduce((total, { price }) => (total += price), 0)
+
+      items.forEach(item => shoppingCart.addItem(item))
+
+      expect(shoppingCart.getTotal()).to.equal(expectedTotal)
+    })
+  })
 })
