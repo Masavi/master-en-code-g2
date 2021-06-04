@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Search from './Search';
 
 const Home = () => {
+    const [searchText, setSearchText] = useState('');
+
     return (
-        <div>
+        <>
             <h1>Hola desde Home</h1>
-        </div>
+            <Search
+                title={'Mi búsqueda'}
+                value={searchText}
+                onChange={(e) => setSearchText(e.target.value)}
+            />
+        </>
     )
 };
 
