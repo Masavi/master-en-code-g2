@@ -5,7 +5,9 @@ const express = require('express');
 const app = express(); // Aplicación de API
 const PORT = process.env.PORT || 4020;
 
-mongoose.connect(process.env.MONGO_ATLAS_URI, {useNewUrlParser: true, useUnifiedTopology: true})
+const { db_uri } = require('./config');
+
+mongoose.connect(db_uri, {useNewUrlParser: true, useUnifiedTopology: true})
   .then(() => console.log('Database connected'))
   .catch(() => console.log('Error connecting to database...'));
 
