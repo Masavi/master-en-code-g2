@@ -2,10 +2,10 @@ const express = require('express');
 const router = express.Router();
 
 const UserController = require('../controllers/UserController');
-const { multer } = require('../middlewares');
+const { multer, manageFiles } = require('../middlewares');
 
 // Create
-router.post('/users', multer.single('profile_pic'), UserController.create);
+router.post('/users', multer.single('profile_pic'), manageFiles, UserController.create);
 
 // Read (All)
 router.get('/users', UserController.findAll);
