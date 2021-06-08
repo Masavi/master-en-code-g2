@@ -13,6 +13,7 @@ mongoose.connect(db_uri, {useNewUrlParser: true, useUnifiedTopology: true})
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use('/uploads', express.static('uploads'));
 
 app.get('/prueba', (req, res) => {
   res.status(200).json({ message: 'Todo cool' });
