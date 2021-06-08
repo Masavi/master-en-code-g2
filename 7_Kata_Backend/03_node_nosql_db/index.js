@@ -3,9 +3,8 @@ require('dotenv').config();
 const mongoose = require('mongoose');
 const express = require('express');
 const app = express(); // Aplicación de API
-const PORT = process.env.PORT || 4020;
 
-const { db_uri } = require('./config');
+const { db_uri, PORT } = require('./config');
 
 mongoose.connect(db_uri, {useNewUrlParser: true, useUnifiedTopology: true})
   .then(() => console.log('Database connected'))
