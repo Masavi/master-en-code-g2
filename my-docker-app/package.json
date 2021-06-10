@@ -1,0 +1,15 @@
+{
+  "name": "my-docker-app",
+  "version": "1.0.0",
+  "description": "my first dockerized app",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "npm test"
+  },
+  "author": "Krystel Baca",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
