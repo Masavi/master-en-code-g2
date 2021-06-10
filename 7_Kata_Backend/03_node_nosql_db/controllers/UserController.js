@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const storage = require('../utils/storage');
 const { User } = require('../models/User');
 const { Post } = require('../models/Post');
 

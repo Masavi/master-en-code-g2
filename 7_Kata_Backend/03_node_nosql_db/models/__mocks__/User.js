@@ -21,6 +21,31 @@ function create(body) {
     });
 }
 
+function findByIdAndUpdate(id, body, options) {
+    const fakeUser = {
+        "_id": "60bed2fc7361601a4c78f6ff",
+        "role":"GUEST",
+        "profile_pic":"http://localhost/uploads\\1623118588139_clouds.jpeg",
+        "is_active":true,
+        "first_name":"Pepito",
+        "last_name":"Jimenez",
+        "email":"pepito@gmail.com",
+        "posts":[],
+        "created_at":{"$date":"2021-06-08T02:16:28.158Z"},
+        "updated_at":{"$date":"2021-06-08T02:16:28.158Z"},
+        "__v":0
+    }
+
+    return new Promise((resolve, reject) => {
+        if (id === fakeUser._id) {
+            fakeUser.first_name = body.first_name;
+            resolve(fakeUser);
+        }
+        throw new Error('User not found');
+    });
+}
+
 User.create = create;
+User.findByIdAndUpdate = findByIdAndUpdate;
 
 module.exports = { User };
