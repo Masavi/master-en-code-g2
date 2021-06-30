@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/uploads', express.static('uploads'));
 
 app.get('/prueba', (req, res) => {
-  res.status(200).json({ message: 'Todo coosl' });
+  res.status(200).json({ message: 'Todo chidori' });
 });
 
 app.use(require('./routers/UserRouter'));

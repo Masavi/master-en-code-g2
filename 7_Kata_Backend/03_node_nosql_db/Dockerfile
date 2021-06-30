@@ -27,5 +27,5 @@ EXPOSE 4020
 # CMD ["node", "index.js"]
 
 # Comando para correr nodemon
-# CMD ["nodemon", "-L", "--watch", ".", "index.js"]
-CMD ["node", "index.js"]
+CMD ["nodemon", "-L", "--watch", ".", "index.js"]
+# CMD ["node", "index.js"]
