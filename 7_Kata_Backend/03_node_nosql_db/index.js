@@ -5,7 +5,7 @@ const express = require('express');
 const app = express(); // Aplicación de API
 
 const { db_uri, PORT } = require('./config');
-
+console.log(db_uri)
 mongoose.connect(db_uri, {useNewUrlParser: true, useUnifiedTopology: true})
   .then(() => console.log('Database connected'))
   .catch(() => console.log('Error connecting to database...'));
