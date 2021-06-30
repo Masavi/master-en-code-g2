@@ -7,11 +7,14 @@ services:
             - "4000:4020"
         depends_on:
             - db
+        env_file:
+            - .env
         volumes:
             - .:/usr/src/app
             - /usr/src/app/node_modules
     # build: Ejecuta el docker file para crear la imagen y despues crea el container
     # ports: Sinonimo del docker run -p 4000:4020 api-mongo, hace un puenta entre el puerto 4000 de mi pc con 4020 del container 
+    # env_file defines un archivo .env y crea las varibles de entorno dentro del container 
     db:
         image: mongo
         restart: always
