@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/uploads', express.static('uploads'));
 
 app.get('/prueba', (req, res) => {
-  res.status(200).json({ message: 'Todo cool' });
+  res.status(200).json({ message: 'Todo coosl' });
 });
 
 app.use(require('./routers/UserRouter'));
@@ -23,3 +23,5 @@ app.use(require('./routers/ItemRouter'));
 app.use(require('./routers/TicketRouter'));
 
 app.listen(PORT, () => console.log(`It's alive on ${PORT}!`));
+
+module.exports = app;
