@@ -10,6 +10,8 @@ mongoose.connect(
   .then(() => console.log('Database connected'))
   .catch(() => console.log('Error connecting to database...'));
 
+const ClientSession = require('./ClientSession');
+
 const results = [];  
 
 fs.createReadStream('e.csv')
@@ -28,6 +30,9 @@ fs.createReadStream('e.csv')
 
     const day = parseInt(day_tz);
     const dayString = day > 9 ? `${day}` : `0${day}`;
+
+    // antes - 1, 2, 3, 4, 5, 10, 11, 12, 13...
+    // despues - 01, 02, 03, 04, 05
         
     const hour = parseInt(hour_tz)
     const hourString = hour > 9 ? `${hour}` : `0${hour}`;
@@ -48,10 +53,11 @@ fs.createReadStream('e.csv')
 
     results.push(newClientSession);
   })
-  .on('end', () => {
+  .on('end', async () => {
     // results.slice(0, 100).map(data => console.log(data))
-    for (let index = 0; index < 5; index++) {
-      console.log(results[index]);
+    for (let index = 0; index < results.length; index++) {
+      console.log(`Row #${index} inserted`);
+      await ClientSession.create(results[index]);
     }
   });
-
+  
