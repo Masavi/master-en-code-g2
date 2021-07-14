@@ -36,7 +36,7 @@ const clientSessionSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-});
+}, { timestamps: true });
 
 const ClientSession = mongoose.model('Session', clientSessionSchema);
 
