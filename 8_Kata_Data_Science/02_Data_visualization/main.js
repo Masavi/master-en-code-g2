@@ -53,3 +53,24 @@ d3
   .text((d) => {
     return `Soy el valor ${d}`
   })
+
+/**
+ * 
+ * Reto:
+ * 
+ * Partiendo del siguiente arreglo de países
+ * 
+ * 
+    const paises = [
+      { nombre : 'mexico', porcentaje : 875, color: 'green'},
+      { nombre : 'colombia', porcentaje : 763, color: 'yellow'}
+      { nombre : 'bolivia', porcentaje : 663, color: 'red'}
+      { nombre : 'perú', porcentaje : 913, color: 'blue'}
+    ];
+  
+    Genera una gráfica de barras que muestre, cada barra del color que tiene cada objeto,
+    y dentro de cada barra debe mostrarse un texto como el siguiente:
+
+    'bolivia 663%'
+    'colombia 763%'
+ */
