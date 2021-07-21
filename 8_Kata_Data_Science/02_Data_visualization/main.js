@@ -99,13 +99,38 @@ d3
     return `${pais.nombre} ${pais.porcentaje}%`
   })
 
+
+/**
+ * Métodos estadísticos en D3.js
+ * https://github.com/d3/d3/blob/main/API.md
+ */
+
 const numeros = [3, 5, 7, 11, 13, 1, 15, 21, 33, 55];
 
-console.log(d3.sum(numeros));
-console.log(d3.min(numeros));
-console.log(d3.minIndex(numeros));
-console.log(d3.max(numeros));
-console.log(d3.maxIndex(numeros));
-console.log(d3.extent(numeros));
-console.log(d3.mean(numeros));
-console.log(d3.median(numeros));
+// console.log(d3.sum(numeros));
+// console.log(d3.min(numeros));
+// console.log(d3.minIndex(numeros));
+// console.log(d3.max(numeros));
+// console.log(d3.maxIndex(numeros));
+// console.log(d3.extent(numeros));
+// console.log(d3.mean(numeros));
+// console.log(d3.median(numeros));
+
+/**
+ * Carga de datos CSV con D3
+ * Existen dos formas de cargar/manejar datos de un CSV:
+ */
+
+// 1) Obtener elemento tras elemento del csv a través de un callback
+// d3.csv('./CausasDeMortalidad.csv', (d) => {
+//   console.log(d);
+// });
+
+// 2) Traer el arreglo completo con .then
+d3
+  .csv('./CausasDeMortalidad.csv')
+  .then((result) => {
+    console.log(result);
+  })
+
+// Ejercicio: Crear una gráfica de barras a partir de el resultado de los datos cargados desde el CSV "CausasDeMortalidad"
