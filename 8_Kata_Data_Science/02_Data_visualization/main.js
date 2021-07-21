@@ -78,6 +78,9 @@ const paises = [
   { nombre : 'perú', porcentaje : 91, color: 'blue'}
 ];
 
+// const porcentajes = paises.map((pais) => pais.porcentaje);
+// console.log('hola', porcentajes);
+
 d3
   .select('body')
   .selectAll('div')
@@ -95,3 +98,14 @@ d3
   .text((pais) => {
     return `${pais.nombre} ${pais.porcentaje}%`
   })
+
+const numeros = [3, 5, 7, 11, 13, 1, 15, 21, 33, 55];
+
+console.log(d3.sum(numeros));
+console.log(d3.min(numeros));
+console.log(d3.minIndex(numeros));
+console.log(d3.max(numeros));
+console.log(d3.maxIndex(numeros));
+console.log(d3.extent(numeros));
+console.log(d3.mean(numeros));
+console.log(d3.median(numeros));
