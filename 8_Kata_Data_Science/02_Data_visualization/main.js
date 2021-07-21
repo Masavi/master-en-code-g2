@@ -194,7 +194,7 @@ const escalaSegmento = d3.scaleBand()
         .domain([0, maxMuertes])
 
       const scalaColor = d3.scaleLinear()
-        .range(['blue', 'green', 'yellow', 'red'])
+        .range(['white', 'yellow', 'orange', 'red'])
         .domain([0, maxMuertes / 4, maxMuertes / 2, maxMuertes]) 
 
       d3
