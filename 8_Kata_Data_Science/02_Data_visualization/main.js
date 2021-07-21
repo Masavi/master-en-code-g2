@@ -193,6 +193,10 @@ const escalaSegmento = d3.scaleBand()
         .range([0, 100])
         .domain([0, maxMuertes])
 
+      const scalaColor = d3.scaleLinear()
+        .range(['blue', 'green', 'yellow', 'red'])
+        .domain([0, maxMuertes / 4, maxMuertes / 2, maxMuertes]) 
+
       d3
         .select('body')
         .selectAll('section')
@@ -200,7 +204,7 @@ const escalaSegmento = d3.scaleBand()
         .enter()
         .append('section')
         .style('width', (d) => `${lineal(d.noMuertes)}px`)
-        .style('background-color', (d) => 'yellow')
+        .style('background-color', (d) => scalaColor(d.noMuertes))
         .style('margin-bottom', '3px')
         .text((d) => d.noMuertes)
     });
