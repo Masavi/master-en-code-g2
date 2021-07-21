@@ -130,7 +130,17 @@ const numeros = [3, 5, 7, 11, 13, 1, 15, 21, 33, 55];
 d3
   .csv('./CausasDeMortalidad.csv')
   .then((result) => {
-    console.log(result);
+    // console.log(result);
+    d3
+      .select('body')
+      .selectAll('div')
+      .data(result)
+      .enter()
+      .append('div')
+      .style('width', (d) => `${(d.Defunciones)}px` )
+      .style('background', 'yellowgreen')
+      .style('margin-bottom', '3px')
+      .text((d) => `${d.Defunciones} muertes por ${d.Causas} `)
   })
 
 // Ejercicio: Crear una gráfica de barras a partir de el resultado de los datos cargados desde el CSV "CausasDeMortalidad"
