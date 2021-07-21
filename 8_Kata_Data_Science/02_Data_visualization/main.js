@@ -55,12 +55,8 @@ d3
   })
 
 /**
- * 
- * Reto:
- * 
- * Partiendo del siguiente arreglo de países
- * 
- * 
+    Reto:
+    Partiendo del siguiente arreglo de países
     const paises = [
       { nombre : 'mexico', porcentaje : 875, color: 'green'},
       { nombre : 'colombia', porcentaje : 763, color: 'yellow'}
@@ -74,3 +70,28 @@ d3
     'bolivia 663%'
     'colombia 763%'
  */
+
+const paises = [
+  { nombre : 'mexico', porcentaje : 87, color: 'green'},
+  { nombre : 'colombia', porcentaje : 76, color: 'yellow'},
+  { nombre : 'bolivia', porcentaje : 66, color: 'red'},
+  { nombre : 'perú', porcentaje : 91, color: 'blue'}
+];
+
+d3
+  .select('body')
+  .selectAll('div')
+  .data(paises)
+  .enter()
+  .append('div')
+  .style('height', '40px')
+  .style('background', (pais) => {
+    return pais.color
+  })
+  .style('margin-bottom', '10px')
+  .style('width', (pais) => {
+    return `${pais.porcentaje}px`
+  })
+  .text((pais) => {
+    return `${pais.nombre} ${pais.porcentaje}%`
+  })
