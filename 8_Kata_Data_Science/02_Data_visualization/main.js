@@ -131,6 +131,8 @@ d3
   .csv('./CausasDeMortalidad.csv')
   .then((result) => {
     // console.log(result);
+
+    // Ejercicio: Crear una gráfica de barras a partir de el resultado de los datos cargados desde el CSV "CausasDeMortalidad"
     d3
       .select('body')
       .selectAll('div')
@@ -143,4 +145,25 @@ d3
       .text((d) => `${d.Defunciones} muertes por ${d.Causas} `)
   })
 
-// Ejercicio: Crear una gráfica de barras a partir de el resultado de los datos cargados desde el CSV "CausasDeMortalidad"
+/**
+ * ESCALAS
+ * 
+ *  - Rangos: Conjunto de valores resultantes de una función
+ * 
+ *  - Dominios: Conjunto de valores con el que estamos trabajando
+ */
+
+// Se aplica a valores numéricos
+const escalaLinear = d3.scaleLinear()
+  .range([0, 100])
+  .domain([0, 10000])
+
+// Se aplican a datos categóricos, respetando el orden
+const escalaOrdinal = d3.scaleOrdinal()
+  .range(['purple', 'blue', 'gray'])
+  .domain(['setosas', 'versicolor', 'virginica'])
+
+// Le aplican un valor numérico a un conjunto de categorías
+const escalaSegmento = d3.scaleBand()
+  .range([0, 100])
+  .domain(['lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado']);
