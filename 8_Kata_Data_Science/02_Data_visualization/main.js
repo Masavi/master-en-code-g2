@@ -127,23 +127,23 @@ const numeros = [3, 5, 7, 11, 13, 1, 15, 21, 33, 55];
 // });
 
 // 2) Traer el arreglo completo con .then
-d3
-  .csv('./CausasDeMortalidad.csv')
-  .then((result) => {
-    // console.log(result);
+// d3
+//   .csv('./CausasDeMortalidad.csv')
+//   .then((result) => {
+//     // console.log(result);
 
-    // Ejercicio: Crear una gráfica de barras a partir de el resultado de los datos cargados desde el CSV "CausasDeMortalidad"
-    d3
-      .select('body')
-      .selectAll('div')
-      .data(result)
-      .enter()
-      .append('div')
-      .style('width', (d) => `${(d.Defunciones)}px` )
-      .style('background', 'yellowgreen')
-      .style('margin-bottom', '3px')
-      .text((d) => `${d.Defunciones} muertes por ${d.Causas} `)
-  })
+//     // Ejercicio: Crear una gráfica de barras a partir de el resultado de los datos cargados desde el CSV "CausasDeMortalidad"
+//     d3
+//       .select('body')
+//       .selectAll('div')
+//       .data(result)
+//       .enter()
+//       .append('div')
+//       .style('width', (d) => `${(d.Defunciones)}px` )
+//       .style('background', 'yellowgreen')
+//       .style('margin-bottom', '3px')
+//       .text((d) => `${d.Defunciones} muertes por ${d.Causas} `)
+//   })
 
 /**
  * ESCALAS
@@ -167,3 +167,40 @@ const escalaOrdinal = d3.scaleOrdinal()
 const escalaSegmento = d3.scaleBand()
   .range([0, 100])
   .domain(['lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado']);
+
+  d3
+    .csv('./CausasDeMortalidad.csv')
+    .then((result) => result.map((r) => {
+        return {
+          nombre: r.Causas,
+          noMuertes: parseInt(r.Defunciones),
+        }
+      })
+    )
+    .then((dataSet) => {
+      dataSet.sort(
+        (a, b) => (a.noMuertes > b.noMuertes)
+          ? -1
+          : 1
+      )
+      // console.log('Enfermedades Ordenadas', dataSet);
+
+      const muertesArray = dataSet.map((d) => d.noMuertes); 
+      const maxMuertes = d3.max(muertesArray);
+      // const maxMuertes = d3.max(dataSet, (d) => d.noMuertes)
+
+      const lineal = d3.scaleLinear()
+        .range([0, 100])
+        .domain([0, maxMuertes])
+
+      d3
+        .select('body')
+        .selectAll('section')
+        .data(dataSet)
+        .enter()
+        .append('section')
+        .style('width', (d) => `${lineal(d.noMuertes)}px`)
+        .style('background-color', (d) => 'yellow')
+        .style('margin-bottom', '3px')
+        .text((d) => d.noMuertes)
+    });
